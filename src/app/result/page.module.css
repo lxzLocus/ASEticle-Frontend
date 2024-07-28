@@ -1,0 +1,98 @@
+/**************************
+コンテナ設定
+**************************/
+
+/* Top Bar */
+.topBar {
+    width: 100%;
+    height: 10vh;
+    display: flex;
+    align-items: center;
+    justify-content: space-between; /* 余白を均等に配置 */
+    padding: 0 3rem;
+    /* background-color: #b3ff00; */
+}
+
+.image {
+    height: 5vh;
+    max-height: 10vh;
+    margin-right: 3rem; /* 画像とテキストフィールドの間に余白を追加 */
+}
+
+/*Text Field*/
+.centeredContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    height: 100vh;
+    width: 100vw;
+    /* background-color: #47ff78; */
+}
+
+.queryFlex {
+    flex: 1;
+    display: flex;
+}
+
+.textField {
+    width: 40vw;
+    max-width: 100%;
+}
+
+/*Toggle Switch*/
+.switchLabelContainer {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+/* スイッチコンテナを右側に配置 */
+.switchLabelContainer {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-left: auto; /* スイッチコンテナを右側に配置 */
+}
+
+.switchLabel {
+    font-size: 14px;
+}
+
+/**************************
+ディスプレイごとの設定
+**************************/
+
+/*Desktop ビューポート幅 : 1200px~*/
+@media (min-width: 1200px) {
+    .queryFlex {
+        width: 80vw;
+    }
+}
+
+/*Tablet ビューポート幅 : 600px~1200px*/
+@media (min-width: 600px) and (max-width: 1200px) {
+    .queryFlex {
+        width: 60vw;
+    }
+}
+
+/*Mobile ビューポート幅 : ~600px*/
+@media (max-width: 600px) {
+    .queryFlex {
+        width: 100vw;
+    }
+
+    .textField {
+        width: 80vw;
+        max-width: 100vw;
+    }
+
+    .switchLabelContainer {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        max-width: 35vw;
+        margin-top: 10px;
+    }
+}
