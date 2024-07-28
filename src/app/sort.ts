@@ -1,5 +1,63 @@
 import * as fs from 'fs';
 
+interface origJson {
+    url: string; 
+    title: string; 
+    author: string; 
+    conference: string; 
+    pages: number; 
+    date: string; 
+    abstract: string; 
+    cite_num: number; 
+    submitted: boolean; 
+    relevant_no: number; 
+    tier: number;
+};
+
+const sort = (type: string, sortType: string, nowJsonArray: origJson[]): origJson[] => {
+    let returnArray: origJson[] = [];
+  
+    switch(type){
+        case "日付":
+            if (sortType === "昇順") {
+                returnArray = sortByDateAsc(nowJsonArray);
+            } else {
+                returnArray = sortByDateDesc(nowJsonArray);
+            }
+            break;
+        case "関連度":
+            if (sortType === "昇順") {
+                returnArray = sortByRelevantNoAsc(nowJsonArray);
+            } else {
+                returnArray = sortByRelevantNoDesc(nowJsonArray);
+            }
+            break;
+        case "学会ランク":
+            if (sortType === "昇順") {
+                returnArray = sortByTierAsc(nowJsonArray);
+            } else {
+                returnArray = sortByTierDesc(nowJsonArray);
+            }
+            break;
+        case "学会学術誌名":
+            if (sortType === "昇順") {
+                returnArray = sortByConferenceAsc(nowJsonArray);
+            } else {
+                returnArray = sortByConferenceDesc(nowJsonArray);
+            }
+            break;
+        case "被引用数":
+            if (sortType === "昇順") {
+                returnArray = sortByCiteNumAsc(nowJsonArray);
+            } else {
+                returnArray = sortByCiteNumDesc(nowJsonArray);
+            }
+            break;
+    }
+  
+    return returnArray;
+};
+
 // 日付昇順に並べ替える関数
 function sortByDateAsc(data: any[]): any[] {
     return data.sort((a, b) => {
@@ -24,6 +82,22 @@ function sortByRelevantNoAsc(data: any[]): any[] {
 // 関連度降順に並べ替える関数
 function sortByRelevantNoDesc(data: any[]): any[] {
     return data.sort((a, b) => b.relevant_no - a.relevant_no);
+}
+
+// 学会ランク昇順に並べ替える関数
+function sortByTierAsc(data: any[]): any[] {
+    return data.sort((a, b) => {
+        const tierCompare = a.tier - b.tier;
+        return tierCompare !== 0 ? tierCompare : a.relevant_no - b.relevant_no;
+    });
+}
+
+// 学会ランク降順に並べ替える関数
+function sortByTierDesc(data: any[]): any[] {
+    return data.sort((a, b) => {
+        const tierCompare = b.tier - a.tier;
+        return tierCompare !== 0 ? tierCompare : a.relevant_no - b.relevant_no;
+    });
 }
 
 // 学会・学術誌名昇順に並べ替える関数
@@ -58,63 +132,12 @@ function sortByCiteNumDesc(data: any[]): any[] {
     });
 }
 
-// // test.jsonファイルのパスを指定
-// const filePath = './test.json';
-// // test.jsonファイルを読み込む
-// const testData = JSON.parse(fs.readFileSync(filePath, 'utf8'));
+// test.jsonファイルのパスを指定
+const filePath = './test.json';
+// test.jsonファイルを読み込む
+const testData = JSON.parse(fs.readFileSync(filePath, 'utf8'));
 
-// // 日付昇順テスト
-// console.log('元のデータ:', JSON.stringify(testData, null, 2));
-// const ascSortedData = sortByDateAsc([...testData]);  // 元のデータを保持するためにスプレッド演算子を使用
-// console.log('昇順:', JSON.stringify(ascSortedData, null, 2));
-// fs.writeFileSync(filePath, JSON.stringify(ascSortedData, null, 2));
-// console.log(`昇順に並べ替えたデータを ${filePath} に上書き保存しました。`);
-
-// // 日付降順テスト
-// console.log('元のデータ:', JSON.stringify(testData, null, 2));
-// const descSortedData = sortByDateDesc([...testData]);  // 元のデータを保持するためにスプレッド演算子を使用
-// console.log('降順:', JSON.stringify(descSortedData, null, 2));
-// fs.writeFileSync(filePath, JSON.stringify(descSortedData, null, 2));
-// console.log(`降順に並べ替えたデータを ${filePath} に上書き保存しました。`);
-
-// // 関連度昇順テスト
-// console.log('元のデータ:', JSON.stringify(testData, null, 2));
-// const ascSortedData = sortByRelevantNoAsc([...testData]);  // 元のデータを保持するためにスプレッド演算子を使用
-// console.log('昇順:', JSON.stringify(ascSortedData, null, 2));
-// fs.writeFileSync(filePath, JSON.stringify(ascSortedData, null, 2));
-// console.log(`昇順に並べ替えたデータを ${filePath} に上書き保存しました。`);
-
-// // 関連度降順テスト
-// console.log('元のデータ:', JSON.stringify(testData, null, 2));
-// const descSortedData = sortByRelevantNoDesc([...testData]);  // 元のデータを保持するためにスプレッド演算子を使用
-// console.log('降順:', JSON.stringify(descSortedData, null, 2));
-// fs.writeFileSync(filePath, JSON.stringify(descSortedData, null, 2));
-// console.log(`降順に並べ替えたデータを ${filePath} に上書き保存しました。`);
-
-// // 学会・学術誌名昇順テスト
-// console.log('元のデータ:', JSON.stringify(testData, null, 2));
-// const ascSortedData = sortByConferenceAsc([...testData]);  // 元のデータを保持するためにスプレッド演算子を使用
-// console.log('昇順:', JSON.stringify(ascSortedData, null, 2));
-// fs.writeFileSync(filePath, JSON.stringify(ascSortedData, null, 2));
-// console.log(`昇順に並べ替えたデータを ${filePath} に上書き保存しました。`);
-
-// // 学会・学術誌名降順テスト
-// console.log('元のデータ:', JSON.stringify(testData, null, 2));
-// const descSortedData = sortByConferenceDesc([...testData]);  // 元のデータを保持するためにスプレッド演算子を使用
-// console.log('降順:', JSON.stringify(descSortedData, null, 2));
-// fs.writeFileSync(filePath, JSON.stringify(descSortedData, null, 2));
-// console.log(`降順に並べ替えたデータを ${filePath} に上書き保存しました。`);
-
-// // 被引用数昇順テスト
-// console.log('元のデータ:', JSON.stringify(testData, null, 2));
-// const ascSortedData = sortByCiteNumAsc([...testData]);  // 元のデータを保持するためにスプレッド演算子を使用
-// console.log('昇順:', JSON.stringify(ascSortedData, null, 2));
-// fs.writeFileSync(filePath, JSON.stringify(ascSortedData, null, 2));
-// console.log(`昇順に並べ替えたデータを ${filePath} に上書き保存しました。`);
-
-// // 被引用数降順テスト
-// console.log('元のデータ:', JSON.stringify(testData, null, 2));
-// const descSortedData = sortByCiteNumDesc([...testData]);  // 元のデータを保持するためにスプレッド演算子を使用
-// console.log('降順:', JSON.stringify(descSortedData, null, 2));
-// fs.writeFileSync(filePath, JSON.stringify(descSortedData, null, 2));
-// console.log(`降順に並べ替えたデータを ${filePath} に上書き保存しました。`);
+// テスト
+console.log('元のデータ:', JSON.stringify(testData, null, 2));
+const ascSortedData = sort("日付", "昇順", testData);
+console.log('昇順:', JSON.stringify(ascSortedData, null, 2));
