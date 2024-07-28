@@ -1,0 +1,15 @@
+services:
+  node:
+    build:
+      context: ./
+      dockerfile: Dockerfile
+    container_name: front
+    ports:
+      - "49513:3000"
+    #restart: always
+    tty: true
+    volumes:
+      - /app/node_modules
+      - type: bind
+        source: ./
+        target: /app
