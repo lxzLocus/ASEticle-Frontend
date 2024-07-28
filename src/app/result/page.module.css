@@ -8,18 +8,21 @@
     height: 10vh;
     display: flex;
     align-items: center;
-    justify-content: space-between; /* 余白を均等に配置 */
+    justify-content: space-between;
+    /* 余白を均等に配置 */
     padding: 0 3rem;
+    box-sizing: border-box;
     /* background-color: #b3ff00; */
 }
 
 .image {
     height: 5vh;
     max-height: 10vh;
-    margin-right: 3rem; /* 画像とテキストフィールドの間に余白を追加 */
+    margin-right: 3rem;
+    /* 画像とテキストフィールドの間に余白を追加 */
 }
 
-/*Text Field*/
+/* Text Field */
 .centeredContainer {
     display: flex;
     flex-direction: column;
@@ -31,8 +34,10 @@
 }
 
 .queryFlex {
-    flex: 1;
     display: flex;
+    flex: 1;
+    /* align-items: center;
+    justify-content: center; */
 }
 
 .textField {
@@ -40,44 +45,74 @@
     max-width: 100%;
 }
 
-/*Toggle Switch*/
+/* Toggle Switch */
 .switchLabelContainer {
     display: flex;
     align-items: center;
     gap: 8px;
-}
-
-/* スイッチコンテナを右側に配置 */
-.switchLabelContainer {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    margin-left: auto; /* スイッチコンテナを右側に配置 */
+    margin-left: auto;
+    /* スイッチコンテナを右側に配置 */
 }
 
 .switchLabel {
     font-size: 14px;
 }
 
+/* Content Item */
+.contentContainer {
+    width: 80%;
+    margin-top: 2rem;
+}
+
+.contentItem {
+    border: 1px solid #ccc;
+    padding: 1rem;
+    margin-bottom: 1rem;
+    border-radius: 8px;
+}
+
+.title {
+    font-size: 1.2rem;
+    font-weight: bold;
+    text-decoration: none;
+    color: inherit; 
+}
+
+.author {
+    font-size: 1rem;
+    color: #555;
+}
+
+.abstract {
+    font-size: 0.9rem;
+    color: #777;
+}
+
+.meta {
+    font-size: 0.8rem;
+    color: #999;
+    margin-top: 0.5rem;
+}
+
 /**************************
 ディスプレイごとの設定
 **************************/
 
-/*Desktop ビューポート幅 : 1200px~*/
+/* Desktop ビューポート幅 : 1200px~ */
 @media (min-width: 1200px) {
     .queryFlex {
         width: 80vw;
     }
 }
 
-/*Tablet ビューポート幅 : 600px~1200px*/
+/* Tablet ビューポート幅 : 600px~1200px */
 @media (min-width: 600px) and (max-width: 1200px) {
     .queryFlex {
         width: 60vw;
     }
 }
 
-/*Mobile ビューポート幅 : ~600px*/
+/* Mobile ビューポート幅 : ~600px */
 @media (max-width: 600px) {
     .queryFlex {
         width: 100vw;
@@ -92,7 +127,7 @@
         display: flex;
         align-items: center;
         gap: 8px;
-        max-width: 35vw;
         margin-top: 10px;
+        margin-left: 0;
     }
 }

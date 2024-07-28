@@ -1,6 +1,7 @@
 /**************************
 コンテナ設定
 **************************/
+
 /*Text Field*/
 .centeredContainer {
     display: flex;
@@ -51,14 +52,19 @@
     font-size: 14px;
 }
 
+/* Array Item Container */
+.arrayItemContainer {
+    width: 80vw;
+    max-width: 800px;
+    padding: 1rem;
+    margin: 1rem 0;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    background-color: #fff;
+}
 
-
-
-
-/**************************
-ディスプレイごとの設定
-**************************/
-
+/* ディスプレイごとの設定 */
 /*Desktop ビューポート幅 : 1200px~*/
 @media (min-width: 1200px) {
     .queryContainer {
@@ -86,9 +92,8 @@
     .queryContainer {
         width: 80vw;
     }
+
+    .arrayItemContainer {
+        width: 90vw;
+    }
 }
-
-
-
-
-
