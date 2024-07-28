@@ -6,36 +6,8 @@ import { MagnifyingGlassIcon, ArrowRightIcon } from '@radix-ui/react-icons';
 import styles from './page.module.css';
 import React, { useState, useEffect } from 'react';
 
-
-
-const data = [
-    {
-        "url": "https://arxiv.org/abs/2403.00448",
-        "title": "When Large Language Models Confront Repository-Level Automatic Program Repair: How Well They Done?",
-        "author": "Yuxiao Chen, Jingzheng Wu, Xiang Ling",
-        "conference": "2024 IEEE/ACM 46th International Conference on Software Engineering: Companion Proceedings (ICSE-Companion)",
-        "pages": 13,
-        "date": "240301",
-        "abstract": "In recent years, large language models(LLMs) have ",
-        "cite_num": 3,
-        "submitted": true,
-        "relevant_no": 1,
-        "tier": 1
-    },
-    {
-        "url": "https://arxiv.org/abs/2406.05621",
-        "title": "Cross Language Soccer Framework: An Open Source Framework for the RoboCup 2D Soccer Simulation",
-        "author": "Aref Sayareh, Jingzheng Wu, Xiang Ling, Amilcar Soares, Alireza Sadraii",
-        "conference": "arXiv.org",
-        "pages": 12,
-        "date": "240501",
-        "abstract": "RoboCup Soccer Simulation 2D (SS2D) research is hampered by the complexity of existing Cpp-based codes like Helios,Cyrus, which also suffer from limited integration with modern machine learning frameworks. This development paper introduces a transformative solution a gRPC-based,",
-        "cite_num": 3,
-        "submitted": true,
-        "relevant_no": 3,
-        "tier": 2
-    }
-];
+//testdata
+import { data } from './testdata.js';
 
 
 // 定義
@@ -142,10 +114,10 @@ function ContentItem({ item }: { item: Item }) {
             <p className={styles.author}>{item.author}</p>
             <p className={styles.abstract}>{item.abstract}</p>
             <div className={styles.meta}>
-                <span>{item.pages} pages</span> |
                 <span>{item.date}</span> |
-                <span>Cited: {item.cite_num}</span> |
-                <span>Submitted: {item.submitted ? "Yes" : "No"}</span>
+                <span> {item.pages} pages</span> |
+                <span> Cited: {item.cite_num}</span> |
+                <span> Submitted: {item.submitted ? "Yes" : "No"}</span>
             </div>
         </div>
     );

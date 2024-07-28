@@ -60,22 +60,25 @@
 
 /* Content Item */
 .contentContainer {
-    width: 80%;
+    width: 70vw;
     margin-top: 2rem;
+    /* background-color: #ff01e1; */
 }
 
 .contentItem {
-    border: 1px solid #ccc;
-    padding: 1rem;
+    border: 2px solid #ccc;
+    padding: 1.5rem;
     margin-bottom: 1rem;
-    border-radius: 8px;
+    border-radius: 10px;
+    /* background-color: #47ff78; */
 }
 
 .title {
     font-size: 1.2rem;
     font-weight: bold;
     text-decoration: none;
-    color: inherit; 
+    color: #65c3b0
+    /* タイトルカラーを固定 */
 }
 
 .author {
@@ -85,6 +88,7 @@
 
 .abstract {
     font-size: 0.9rem;
+    width: 60%;
     color: #777;
 }
 
