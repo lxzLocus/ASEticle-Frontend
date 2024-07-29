@@ -8,14 +8,13 @@ const FetchScholarInfo = async (query: string) => {
 		});
 
 		if (!response.ok) {
-			throw new Error('シフトの登録に失敗しました');
+			throw new Error('論文の取得に失敗しました');
 		}
 
 		const data = await response.json();
 
 		return data;
 	} catch (error) {
-		console.error("Failed to register draft shifts", error);
 		return { 'error': error };
 	}
 }
