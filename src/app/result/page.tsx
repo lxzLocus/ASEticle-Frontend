@@ -77,10 +77,13 @@ export default function Home() {
                         />
                     </div>
                 </div>
-                <div className={styles.contentContainer}>
-                    {data.map((item, index) => (
-                        <ContentItem key={index} item={item} />
-                    ))}
+                <div className={styles.mainContainer}>
+                    <ListContainer />
+                    <div className={styles.contentContainer}>
+                        {data.map((item, index) => (
+                            <ContentItem key={index} item={item} />
+                        ))}
+                    </div>
                 </div>
             </div>
         </Theme>
@@ -118,6 +121,18 @@ function ContentItem({ item }: { item: Item }) {
                 <span> Cited: {item.cite_num}</span> |
                 <span> Submitted: {item.submitted ? "Yes" : "No"}</span>
             </div>
+        </div>
+    );
+}
+
+function ListContainer() {
+    // サンプルリストデータ
+    const listItems = ["Item 1", "Item 2", "Item 3", "Item 4", "Item 5"];
+    return (
+        <div className={styles.listContainer}>
+            {listItems.map((item, index) => (
+                <p key={index}>{item}</p>
+            ))}
         </div>
     );
 }
