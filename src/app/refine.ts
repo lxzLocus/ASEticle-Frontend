@@ -19,7 +19,13 @@ const refine = (type: string, sortType: string, refineDate: number, acm: boolean
     let returnArray: origJson[] = [];
   
     // 日付フィルタ
-    if(refineDate !== null){
+    if(refineDate === 0){
+        returnArray = originJsonArray.filter(item => parseInt(item.date) >= refineDate);
+    }else{
+        let refineDateStr = refineDate.toString();
+        refineDateStr = refineDateStr.slice(-2);
+        refineDateStr = refineDateStr + "0101";
+        refineDate = parseInt(refineDateStr);
         returnArray = originJsonArray.filter(item => parseInt(item.date) >= refineDate);
     }
     // acm, arxiv, ieee中でtrueの項目の要素を絞込み
@@ -156,12 +162,12 @@ function sortByCiteNumDesc(data: any[]): any[] {
     });
 }
 
-// test.jsonファイルのパスを指定
-const filePath = '/app/src/app/test.json';
-// test.jsonファイルを読み込む
-const testData = JSON.parse(fs.readFileSync(filePath, 'utf8'));
+// // test.jsonファイルのパスを指定
+// const filePath = '/app/src/app/test.json';
+// // test.jsonファイルを読み込む
+// const testData = JSON.parse(fs.readFileSync(filePath, 'utf8'));
 
-// テスト
-console.log('元のデータ:', JSON.stringify(testData, null, 2));
-const refinedData = refine("日付", "昇順", 200101, true, true, true, testData);
-console.log('昇順:', JSON.stringify(refinedData, null, 2));
+// // テスト
+// console.log('元のデータ:', JSON.stringify(testData, null, 2));
+// const refinedData = refine("日付", "昇順", 2022, true, true, true, testData);
+// console.log('昇順:', JSON.stringify(refinedData, null, 2));
