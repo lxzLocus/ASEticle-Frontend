@@ -163,5 +163,5 @@ const testData = JSON.parse(fs.readFileSync(filePath, 'utf8'));
 
 // テスト
 console.log('元のデータ:', JSON.stringify(testData, null, 2));
-const refinedData = refine("日付", "昇順", 230101, true, false, true, testData);
+const refinedData = refine("日付", "昇順", 200101, true, true, true, testData);
 console.log('昇順:', JSON.stringify(refinedData, null, 2));

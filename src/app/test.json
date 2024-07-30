@@ -1,6 +1,6 @@
 [
 	{
-		"url": "https://arxiv.org/abs/2403.00448",
+		"url": "https://dl.acm.org/abs/2403.00448",
 		"title": "When Large Language Models Confront Repository-Level Automatic Program Repair: How Well They Done?",
 		"author": "Yuxiao Chen, Jingzheng Wu, Xiang Ling, Changjiang Li, Zhiqing Rui, Tianyue Luo, Yanjun Wu",
 		"conference": "2024 IEEE/ACM 46th International Conference on Software Engineering: Companion Proceedings (ICSE-Companion)",
@@ -13,7 +13,7 @@
 		"tier": 4
 	},
 	{
-		"url": "https://arxiv.org/abs/2406.05621",
+		"url": "https://ieeexplore.ieee.org/abs/2406.05621",
 		"title": "Cross Language Soccer Framework: An Open Source Framework for the RoboCup 2D Soccer Simulation",
 		"author": "Nader Zare, Aref Sayareh, Alireza Sadraii, Arad Firouzkouhi, Amilcar Soares",
 		"conference": "arXiv.org",
