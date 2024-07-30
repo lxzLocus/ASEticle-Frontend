@@ -21,7 +21,19 @@
     justify-content: space-between;
     padding: 0 3rem;
     box-sizing: border-box;
-    /* background-color: tomato; */
+    /* background-color: green; */
+}
+
+.countBar {
+    width: 100%;
+    height: 4vh;
+    display: flex;
+    align-items: center;
+    justify-content: left;
+    padding: 0 3rem;
+    box-sizing: border-box;
+    /* background-color: #f5f5f5;
+    color: #333; */
 }
 
 .image {
@@ -34,10 +46,16 @@
 .queryFlex {
     display: flex;
     flex: 1;
+    justify-content: space-between;
+    /* 追加: 要素間のスペースを均等に配置 */
+    width: 80%;
+    /* 必要に応じて幅を変更 */
+    max-width: 100%;
 }
 
 .textField {
-    width: 40vw;
+    width: 60vw;
+    /* 必要に応じて幅を変更 */
     max-width: 100%;
 }
 
@@ -47,19 +65,36 @@
     align-items: center;
     gap: 8px;
     margin-left: auto;
+    width: 30%;
+    /* 必要に応じて幅を変更 */
+    justify-content: flex-end;
+    /* 追加: 右端に寄せる */
 }
 
-.switchLabel {
-    font-size: 14px;
+/* Main Container */
+.mainContainer {
+    display: flex;
+    width: 80%;
+    height: calc(100vh - 12vh);
+    /* topBarとcountBarの高さを引いた分 */
 }
 
-/* Content Item */
+/* List Container */
+.listContainer {
+    width: 20vw;
+    overflow-y: auto;
+    padding: 1rem;
+    /* background-color: lightgray; */
+}
+
+/* Content Container */
 .contentContainer {
-    width: 70vw;
+    width: 80vw;
     margin-top: 2rem;
     overflow-y: auto;
     flex-grow: 1;
     padding-bottom: 2rem;
+    /* background-color: turquoise; */
 }
 
 .contentItem {
@@ -128,5 +163,20 @@
         gap: 8px;
         margin-top: 10px;
         margin-left: 0;
+        justify-content: center;
+        /* 中央に配置 */
+    }
+
+    .mainContainer {
+        flex-direction: column;
+    }
+
+    .listContainer {
+        width: 100%;
+        height: auto;
+    }
+
+    .contentContainer {
+        width: 100%;
     }
 }
