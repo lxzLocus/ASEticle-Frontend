@@ -1,33 +1,33 @@
 //import * as fs from 'fs';
 var fs = require('fs');
 ;
-var refine = function (type, sortType, refineDate, acm, arxiv, ieee, originJsonArray) {
+var refine = function (originJsonArray, options) {
     var returnArray = [];
     // 日付フィルタ
-    if (refineDate === 0) {
-        returnArray = originJsonArray.filter(function (item) { return parseInt(item.date) >= refineDate; });
+    if (options.refineDate === 0) {
+        returnArray = originJsonArray.filter(function (item) { return parseInt(item.date) >= options.refineDate; });
     }
     else {
-        var refineDateStr = refineDate.toString();
+        var refineDateStr = options.refineDate.toString();
         refineDateStr = refineDateStr.slice(-2);
         refineDateStr = refineDateStr + "0101";
-        refineDate = parseInt(refineDateStr);
-        returnArray = originJsonArray.filter(function (item) { return parseInt(item.date) >= refineDate; });
+        options.refineDate = parseInt(refineDateStr);
+        returnArray = originJsonArray.filter(function (item) { return parseInt(item.date) >= options.refineDate; });
     }
     // acm, arxiv, ieee中でtrueの項目の要素を絞込み
-    if (acm === true || arxiv === true || ieee === true) {
+    if (options.acm === true || options.arxiv === true || options.ieee === true) {
         returnArray = returnArray.filter(function (item) {
             var domain = new URL(item.url).hostname;
-            if (acm && domain === 'dl.acm.org')
+            if (options.acm && domain === 'dl.acm.org')
                 return true;
-            if (arxiv && domain === 'arxiv.org')
+            if (options.arxiv && domain === 'arxiv.org')
                 return true;
-            if (ieee && domain === 'ieeexplore.ieee.org')
+            if (options.ieee && domain === 'ieeexplore.ieee.org')
                 return true;
             return false;
         });
     }
-    returnArray = sort(type, sortType, returnArray);
+    returnArray = sort(options.type, options.sortType, returnArray);
     return returnArray;
 };
 var sort = function (type, sortType, nowJsonArray) {
@@ -140,11 +140,19 @@ function sortByCiteNumDesc(data) {
         return citeNumCompare !== 0 ? citeNumCompare : a.relevant_no - b.relevant_no;
     });
 }
-// // test.jsonファイルのパスを指定
-// const filePath = '/app/src/app/test.json';
-// // test.jsonファイルを読み込む
-// const testData = JSON.parse(fs.readFileSync(filePath, 'utf8'));
-// // テスト
-// console.log('元のデータ:', JSON.stringify(testData, null, 2));
-// const refinedData = refine("日付", "昇順", 2022, true, true, true, testData);
-// console.log('昇順:', JSON.stringify(refinedData, null, 2));
+// test.jsonファイルのパスを指定
+var filePath = '/app/src/app/test.json';
+// test.jsonファイルを読み込む
+var testData = JSON.parse(fs.readFileSync(filePath, 'utf8'));
+// テスト
+var optionsData = {
+    type: "日付",
+    sortType: "昇順",
+    refineDate: 2022,
+    acm: true,
+    arxiv: true,
+    ieee: true
+};
+console.log('元のデータ:', JSON.stringify(testData, null, 2));
+var refinedData = refine(testData, optionsData);
+console.log('昇順:', JSON.stringify(refinedData, null, 2));

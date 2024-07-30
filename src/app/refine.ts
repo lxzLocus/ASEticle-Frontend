@@ -15,35 +15,47 @@ interface origJson {
     tier: number;
 };
 
-const refine = (type: string, sortType: string, refineDate: number, acm: boolean, arxiv: boolean, ieee: boolean, originJsonArray: origJson[]): origJson[] => {
+interface RefineOptions {
+    type: string;
+    sortType: string;
+    refineDate: number;
+    acm: boolean;
+    arxiv: boolean;
+    ieee: boolean;
+}
+
+// ここを呼び出す
+// 01
+const refine = (originJsonArray: origJson[], options: RefineOptions): origJson[] => {
     let returnArray: origJson[] = [];
   
     // 日付フィルタ
-    if(refineDate === 0){
-        returnArray = originJsonArray.filter(item => parseInt(item.date) >= refineDate);
+    if(options.refineDate === 0){
+        returnArray = originJsonArray.filter(item => parseInt(item.date) >= options.refineDate);
     }else{
-        let refineDateStr = refineDate.toString();
+        let refineDateStr = options.refineDate.toString();
         refineDateStr = refineDateStr.slice(-2);
         refineDateStr = refineDateStr + "0101";
-        refineDate = parseInt(refineDateStr);
-        returnArray = originJsonArray.filter(item => parseInt(item.date) >= refineDate);
+        options.refineDate = parseInt(refineDateStr);
+        returnArray = originJsonArray.filter(item => parseInt(item.date) >= options.refineDate);
     }
     // acm, arxiv, ieee中でtrueの項目の要素を絞込み
-    if(acm === true || arxiv === true || ieee === true){
+    if(options.acm === true || options.arxiv === true || options.ieee === true){
         returnArray = returnArray.filter(item => {
             const domain = new URL(item.url).hostname;
-            if (acm && domain === 'dl.acm.org') return true;
-            if (arxiv && domain === 'arxiv.org') return true;
-            if (ieee && domain === 'ieeexplore.ieee.org') return true;
+            if (options.acm && domain === 'dl.acm.org') return true;
+            if (options.arxiv && domain === 'arxiv.org') return true;
+            if (options.ieee && domain === 'ieeexplore.ieee.org') return true;
             return false;
         });
     }
 
-    returnArray = sort(type, sortType, returnArray);
+    returnArray = sort(options.type, options.sortType, returnArray);
 
     return returnArray;
 };
 
+// 02
 const sort = (type: string, sortType: string, nowJsonArray: origJson[]): origJson[] => {
     let returnArray: origJson[] = [];
   
@@ -162,12 +174,20 @@ function sortByCiteNumDesc(data: any[]): any[] {
     });
 }
 
-// // test.jsonファイルのパスを指定
-// const filePath = '/app/src/app/test.json';
-// // test.jsonファイルを読み込む
-// const testData = JSON.parse(fs.readFileSync(filePath, 'utf8'));
+// test.jsonファイルのパスを指定
+const filePath = '/app/src/app/test.json';
+// test.jsonファイルを読み込む
+const testData = JSON.parse(fs.readFileSync(filePath, 'utf8'));
 
-// // テスト
-// console.log('元のデータ:', JSON.stringify(testData, null, 2));
-// const refinedData = refine("日付", "昇順", 2022, true, true, true, testData);
-// console.log('昇順:', JSON.stringify(refinedData, null, 2));
+// テスト
+const optionsData = {
+    type: "日付",
+    sortType: "昇順",
+    refineDate: 2022,
+    acm: true,
+    arxiv: true,
+    ieee: true
+};
+console.log('元のデータ:', JSON.stringify(testData, null, 2));
+const refinedData = refine(testData, optionsData);
+console.log('昇順:', JSON.stringify(refinedData, null, 2));
