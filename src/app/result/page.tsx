@@ -1,7 +1,7 @@
 "use client";
 
 import '@radix-ui/themes/styles.css';
-import { Theme, Flex, Text, Box, TextField, IconButton, Switch } from '@radix-ui/themes';
+import { Theme, Flex, Text, Box, TextField, IconButton, Switch, Badge} from '@radix-ui/themes';
 import { MagnifyingGlassIcon, ArrowRightIcon } from '@radix-ui/react-icons';
 import styles from './page.module.css';
 import React, { useState, useEffect } from 'react';
@@ -120,15 +120,20 @@ function Query() {
 
 function ContentItem({ item }: { item: Item }) {
     return (
-        <div className={styles.contentItem}>
-            <a href={item.url} className={styles.title}>{item.title}</a>
-            <p className={styles.author}>{item.author}</p>
-            <p className={styles.abstract}>{item.abstract}</p>
-            <div className={styles.meta}>
-                <span>{item.date}</span> |
-                <span> {item.pages} pages</span> |
-                <span> Cited: {item.cite_num}</span> |
-                <span> Submitted: {item.submitted ? "Yes" : "No"}</span>
+        <div className={styles.arrayItemContainer}>
+            <div className={styles.itemDetails}>
+                <a href={item.url} className={styles.title}>{item.title}</a>
+                <p className={styles.author}>{item.author}</p>
+                <p className={styles.abstract}>{item.abstract}</p>
+                <div className={styles.meta}>
+                    <span>{item.date}</span> |
+                    <span> {item.pages} pages</span> |
+                    <span> Cited: {item.cite_num}</span> |
+                    <span> Submitted: {item.submitted ? "Yes" : "No"}</span>
+                </div>
+            </div>
+            <div className={styles.badgeContainer}>
+                <Badge variant="outline">Badge Text</Badge>
             </div>
         </div>
     );

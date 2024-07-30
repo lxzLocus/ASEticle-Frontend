@@ -74,7 +74,7 @@
 /* Main Container */
 .mainContainer {
     display: flex;
-    width: 80%;
+    width: 78vw;
     height: calc(100vh - 12vh);
     /* topBarとcountBarの高さを引いた分 */
 }
@@ -95,6 +95,20 @@
     flex-grow: 1;
     padding-bottom: 2rem;
     /* background-color: turquoise; */
+}
+
+/* Array Item Container */
+.arrayItemContainer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 80vw; 
+    max-width: 1000px;
+    padding: 1rem;
+    margin: 1rem 0;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .contentItem {
