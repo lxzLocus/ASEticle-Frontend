@@ -55,11 +55,11 @@ function sortByCiteNumDesc(data) {
         return citeNumCompare !== 0 ? citeNumCompare : a.relevant_no - b.relevant_no;
     });
 }
-// test.jsonファイルのパスを指定
-var filePath = '/app/src/app/test.json';
-// test.jsonファイルを読み込む
-var testData = JSON.parse(fs.readFileSync(filePath, 'utf8'));
-// テスト
-console.log('元のデータ:', JSON.stringify(testData, null, 2));
-var refinedData = preSort(testData, "被引用数");
-console.log('昇順:', JSON.stringify(refinedData, null, 2));
+// // test.jsonファイルのパスを指定
+// const filePath = '/app/src/app/test.json';
+// // test.jsonファイルを読み込む
+// const testData = JSON.parse(fs.readFileSync(filePath, 'utf8'));
+// // テスト
+// console.log('元のデータ:', JSON.stringify(testData, null, 2));
+// const refinedData = preSort(testData, "被引用数");
+// console.log('昇順:', JSON.stringify(refinedData, null, 2));

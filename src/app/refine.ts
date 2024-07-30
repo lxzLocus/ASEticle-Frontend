@@ -174,20 +174,20 @@ function sortByCiteNumDesc(data: any[]): any[] {
     });
 }
 
-// test.jsonファイルのパスを指定
-const filePath = '/app/src/app/test.json';
-// test.jsonファイルを読み込む
-const testData = JSON.parse(fs.readFileSync(filePath, 'utf8'));
+// // test.jsonファイルのパスを指定
+// const filePath = '/app/src/app/test.json';
+// // test.jsonファイルを読み込む
+// const testData = JSON.parse(fs.readFileSync(filePath, 'utf8'));
 
-// テスト
-const optionsData = {
-    type: "日付",
-    sortType: "昇順",
-    refineDate: 2022,
-    acm: true,
-    arxiv: true,
-    ieee: true
-};
-console.log('元のデータ:', JSON.stringify(testData, null, 2));
-const refinedData = refine(testData, optionsData);
-console.log('昇順:', JSON.stringify(refinedData, null, 2));
+// // テスト
+// const optionsData = {
+//     type: "日付",
+//     sortType: "昇順",
+//     refineDate: 2022,
+//     acm: true,
+//     arxiv: true,
+//     ieee: true
+// };
+// console.log('元のデータ:', JSON.stringify(testData, null, 2));
+// const refinedData = refine(testData, optionsData);
+// console.log('昇順:', JSON.stringify(refinedData, null, 2));

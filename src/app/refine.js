@@ -1,6 +1,8 @@
 //import * as fs from 'fs';
 var fs = require('fs');
 ;
+// ここを呼び出す
+// 01
 var refine = function (originJsonArray, options) {
     var returnArray = [];
     // 日付フィルタ
@@ -30,6 +32,7 @@ var refine = function (originJsonArray, options) {
     returnArray = sort(options.type, options.sortType, returnArray);
     return returnArray;
 };
+// 02
 var sort = function (type, sortType, nowJsonArray) {
     var returnArray = [];
     switch (type) {
@@ -140,19 +143,19 @@ function sortByCiteNumDesc(data) {
         return citeNumCompare !== 0 ? citeNumCompare : a.relevant_no - b.relevant_no;
     });
 }
-// test.jsonファイルのパスを指定
-var filePath = '/app/src/app/test.json';
-// test.jsonファイルを読み込む
-var testData = JSON.parse(fs.readFileSync(filePath, 'utf8'));
-// テスト
-var optionsData = {
-    type: "日付",
-    sortType: "昇順",
-    refineDate: 2022,
-    acm: true,
-    arxiv: true,
-    ieee: true
-};
-console.log('元のデータ:', JSON.stringify(testData, null, 2));
-var refinedData = refine(testData, optionsData);
-console.log('昇順:', JSON.stringify(refinedData, null, 2));
+// // test.jsonファイルのパスを指定
+// const filePath = '/app/src/app/test.json';
+// // test.jsonファイルを読み込む
+// const testData = JSON.parse(fs.readFileSync(filePath, 'utf8'));
+// // テスト
+// const optionsData = {
+//     type: "日付",
+//     sortType: "昇順",
+//     refineDate: 2022,
+//     acm: true,
+//     arxiv: true,
+//     ieee: true
+// };
+// console.log('元のデータ:', JSON.stringify(testData, null, 2));
+// const refinedData = refine(testData, optionsData);
+// console.log('昇順:', JSON.stringify(refinedData, null, 2));
