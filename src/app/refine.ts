@@ -14,6 +14,29 @@ interface origJson {
     tier: number;
 };
 
+const refine = (type: string, sortType: string, refineDate: number, acm: boolean, arxiv: boolean, ieee: boolean, originJsonArray: origJson[]): origJson[] => {
+    let returnArray: origJson[] = [];
+  
+    // 日付フィルタ
+    if(refineDate !== null){
+        returnArray = originJsonArray.filter(item => parseInt(item.date) >= refineDate);
+    }
+    // acm, arxiv, ieee中でtrueの項目の要素を絞込み
+    if(acm === true || arxiv === true || ieee === true){
+        returnArray = returnArray.filter(item => {
+            const domain = new URL(item.url).hostname;
+            if (acm && domain === 'dl.acm.org') return true;
+            if (arxiv && domain === 'arxiv.org') return true;
+            if (ieee && domain === 'ieeexplore.ieee.org') return true;
+            return false;
+        });
+    }
+
+    returnArray = sort(type, sortType, returnArray);
+
+    return returnArray;
+};
+
 const sort = (type: string, sortType: string, nowJsonArray: origJson[]): origJson[] => {
     let returnArray: origJson[] = [];
   
@@ -139,5 +162,5 @@ const testData = JSON.parse(fs.readFileSync(filePath, 'utf8'));
 
 // テスト
 console.log('元のデータ:', JSON.stringify(testData, null, 2));
-const ascSortedData = sort("日付", "昇順", testData);
-console.log('昇順:', JSON.stringify(ascSortedData, null, 2));
+const refinedData = refine("日付", "昇順", 230101, false, true, false, testData);
+console.log('昇順:', JSON.stringify(refinedData, null, 2));
