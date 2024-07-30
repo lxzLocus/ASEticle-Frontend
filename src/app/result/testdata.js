@@ -9,7 +9,7 @@ export const data = [
         "abstract": "In recent years, large language models(LLMs) have ",
         "cite_num": 3,
         "submitted": true,
-        "relevant_no": 1,
+        "relevant_no": 2,
         "tier": 1
     },
     {

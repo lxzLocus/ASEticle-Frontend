@@ -9,7 +9,6 @@ import React, { useState, useEffect } from 'react';
 //testdata
 import { data } from './testdata.js';
 
-
 // 定義
 interface Item {
     url: string;

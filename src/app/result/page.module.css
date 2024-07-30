@@ -1,43 +1,39 @@
 /**************************
 コンテナ設定
 **************************/
+.centeredContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    /* height: 100vh;
+    width: 100vw; */
+    overflow: hidden;
+    /* background-color: magenta; */
+}
 
 /* Top Bar */
 .topBar {
     width: 100%;
-    height: 10vh;
+    height: 8vh;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    /* 余白を均等に配置 */
     padding: 0 3rem;
     box-sizing: border-box;
-    /* background-color: #b3ff00; */
+    /* background-color: tomato; */
 }
 
 .image {
     height: 5vh;
     max-height: 10vh;
     margin-right: 3rem;
-    /* 画像とテキストフィールドの間に余白を追加 */
 }
 
 /* Text Field */
-.centeredContainer {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: flex-start;
-    height: 100vh;
-    width: 100vw;
-    /* background-color: #47ff78; */
-}
-
 .queryFlex {
     display: flex;
     flex: 1;
-    /* align-items: center;
-    justify-content: center; */
 }
 
 .textField {
@@ -51,7 +47,6 @@
     align-items: center;
     gap: 8px;
     margin-left: auto;
-    /* スイッチコンテナを右側に配置 */
 }
 
 .switchLabel {
@@ -62,7 +57,9 @@
 .contentContainer {
     width: 70vw;
     margin-top: 2rem;
-    /* background-color: #ff01e1; */
+    overflow-y: auto;
+    flex-grow: 1;
+    padding-bottom: 2rem;
 }
 
 .contentItem {
@@ -70,15 +67,13 @@
     padding: 1.5rem;
     margin-bottom: 1rem;
     border-radius: 10px;
-    /* background-color: #47ff78; */
 }
 
 .title {
     font-size: 1.2rem;
     font-weight: bold;
     text-decoration: none;
-    color: #65c3b0
-    /* タイトルカラーを固定 */
+    color: #65c3b0;
 }
 
 .author {
@@ -112,7 +107,7 @@
 /* Tablet ビューポート幅 : 600px~1200px */
 @media (min-width: 600px) and (max-width: 1200px) {
     .queryFlex {
-        width: 60vw;
+        width: 50vw;
     }
 }
 
