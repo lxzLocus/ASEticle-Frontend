@@ -144,7 +144,9 @@ function ListContainer() {
 
     return (
         <div className={styles.listContainer}>
+            <Text className={styles.listLabel}>Filter Conference</Text>
             <SegmentedControl.Root
+                size="3"
                 value={selectedItem}
                 onValueChange={(value) => setSelectedItem(value)}
                 className={styles.segmentedControl}
@@ -160,14 +162,17 @@ function ListContainer() {
                 </SegmentedControl.Item>
             </SegmentedControl.Root>
 
-            <Select.Root value={selectedItem} onValueChange={(value) => setSelectedItem(value)} >
+            <Text className={styles.listLabel}>Sort Type Control</Text>
+            <Select.Root 
+                size="3"
+                value={selectedItem} onValueChange={(value) => setSelectedItem(value)} 
+            >
                 <Select.Trigger aria-label="Food" className={styles.selectTrigger}>
                     {/* <Select.Value placeholder="Select an item…" /> */}
                 </Select.Trigger>
                 <Select.Content>
-                    <Select.Item value="item1" className={styles.selectItem}>Item 1</Select.Item>
-                    <Select.Item value="item2" className={styles.selectItem}>Item 2</Select.Item>
-                    <Select.Item value="item3" className={styles.selectItem}>Item 3</Select.Item>
+                    <Select.Item value="昇順" className={styles.selectItem}>Ascending</Select.Item>
+                    <Select.Item value="降順" className={styles.selectItem}>Descending</Select.Item>
                 </Select.Content>
             </Select.Root>
 

@@ -106,6 +106,12 @@
     /* background-color: rgb(81, 255, 0); */
 }
 
+.listLabel {
+    font-size: 1rem;
+    font-weight: bold;
+    margin-bottom: 1rem;
+}
+
 /* Array Item Container */
 .arrayItemContainer {
     display: flex;
@@ -157,29 +163,36 @@
 .segmentedControl {
     align-items: center;
     justify-content: space-between;
-    width: 80%;
-    margin-top: 1rem;
+    width: 85%;
     margin-bottom: 2rem;
 }
 
 .segmentedControlItem {
-    padding: 0.5rem 1rem;
+    padding: auto;
     cursor: pointer;
     /* background-color: rgb(255, 251, 0); */
 }
 
 .select {
-    margin-bottom: 1rem;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
 }
 
 .selectTrigger {
-    width: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40%;
     padding: 0.5rem;
     /* background-color: magenta; */
 }
 
 .selectItem {
-    padding: 0.5rem 1rem;
+    display: flex;
+    flex-direction: column;
+    width: auto;
+    height: 2rem;
+    padding: auto;
     cursor: pointer;
 }
 
