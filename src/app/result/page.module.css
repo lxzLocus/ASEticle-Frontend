@@ -118,7 +118,8 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    max-width: 1100px;
+    width: 60vw;
+    max-width: 1700px; 
     padding: 1rem;
     margin: 1rem 0;
     border: 1px solid #ccc;
@@ -165,7 +166,6 @@
     align-items: center;
     justify-content: space-between;
     width: 85%;
-    /* margin-bottom: 2rem; */
 }
 
 .segmentedControlItem {
@@ -184,7 +184,6 @@
     align-items: center;
     justify-content: center;
     width: 40%;
-    /* padding: 0.5rem; */
     /* background-color: magenta; */
 }
 
