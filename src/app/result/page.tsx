@@ -1,7 +1,7 @@
 "use client";
 
 import '@radix-ui/themes/styles.css';
-import { Theme, Flex, Text, Box, TextField, IconButton, Switch, Badge} from '@radix-ui/themes';
+import { Theme, Flex, Text, Box, TextField, IconButton, Switch, Badge, CheckboxCards, Select, SegmentedControl } from '@radix-ui/themes';
 import { MagnifyingGlassIcon, ArrowRightIcon } from '@radix-ui/react-icons';
 import styles from './page.module.css';
 import React, { useState, useEffect } from 'react';
@@ -133,20 +133,56 @@ function ContentItem({ item }: { item: Item }) {
                 </div>
             </div>
             <div className={styles.badgeContainer}>
-                <Badge variant="outline">Badge Text</Badge>
+                <Badge variant="outline">Badge</Badge>
             </div>
         </div>
     );
 }
 
 function ListContainer() {
-    // サンプルリストデータ
-    const listItems = ["Item 1", "Item 2", "Item 3", "Item 4", "Item 5"];
+    const [selectedItem, setSelectedItem] = useState("item1");
+
     return (
         <div className={styles.listContainer}>
-            {listItems.map((item, index) => (
-                <p key={index}>{item}</p>
-            ))}
+            <SegmentedControl.Root
+                value={selectedItem}
+                onValueChange={(value) => setSelectedItem(value)}
+                className={styles.segmentedControl}
+            >
+                <SegmentedControl.Item value="item1" className={styles.segmentedControlItem}>
+                    Item 1
+                </SegmentedControl.Item>
+                <SegmentedControl.Item value="item2" className={styles.segmentedControlItem}>
+                    Item 2
+                </SegmentedControl.Item>
+                <SegmentedControl.Item value="item3" className={styles.segmentedControlItem}>
+                    Item 3
+                </SegmentedControl.Item>
+            </SegmentedControl.Root>
+            <Select.Root value={selectedItem} onValueChange={(value) => setSelectedItem(value)} className={styles.select}>
+                <Select.Trigger aria-label="Food" className={styles.selectTrigger}>
+                    {/* <Select.Value placeholder="Select an item…" /> */}
+                </Select.Trigger>
+                <Select.Content>
+                    <Select.Item value="item1" className={styles.selectItem}>Item 1</Select.Item>
+                    <Select.Item value="item2" className={styles.selectItem}>Item 2</Select.Item>
+                    <Select.Item value="item3" className={styles.selectItem}>Item 3</Select.Item>
+                </Select.Content>
+            </Select.Root>
+            {/* <div className={styles.checkboxContainer}>
+                <CheckboxCards checked className={styles.checkboxCard}>
+                    <CheckboxCards.Indicator />
+                    <CheckboxCards.Label>Checkbox 1</CheckboxCards.Label>
+                </CheckboxCards>
+                <CheckboxCards className={styles.checkboxCard}>
+                    <CheckboxCards.Indicator />
+                    <CheckboxCards.Label>Checkbox 2</CheckboxCards.Label>
+                </CheckboxCards>
+                <CheckboxCards className={styles.checkboxCard}>
+                    <CheckboxCards.Indicator />
+                    <CheckboxCards.Label>Checkbox 3</CheckboxCards.Label>
+                </CheckboxCards>
+            </div> */}
         </div>
     );
 }

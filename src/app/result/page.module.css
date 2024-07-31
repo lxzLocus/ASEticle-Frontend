@@ -6,8 +6,8 @@
     flex-direction: column;
     align-items: center;
     justify-content: flex-start;
-    /* height: 100vh;
-    width: 100vw; */
+    /* height: 100vh;*/
+    width: 100%;
     overflow: hidden;
     /* background-color: magenta; */
 }
@@ -24,36 +24,30 @@
     /* background-color: green; */
 }
 
-.countBar {
-    width: 100%;
-    height: 4vh;
-    display: flex;
-    align-items: center;
-    justify-content: left;
-    padding: 0 3rem;
-    box-sizing: border-box;
-    /* background-color: #f5f5f5;
-    color: #333; */
-}
 
+
+/*Image*/
 .image {
     height: 5vh;
     max-height: 10vh;
     margin-right: 3rem;
 }
 
+
 /* Text Field */
 .queryFlex {
     display: flex;
     flex: 1;
     justify-content: space-between;
-    /* 追加: 要素間のスペースを均等に配置 */
-    width: 80%;
+    width: 100%;
     /* 必要に応じて幅を変更 */
     max-width: 100%;
 }
 
 .textField {
+    max-height: 5vh;
+    min-height: 2vh;
+    height: 3vh;
     width: 60vw;
     /* 必要に応じて幅を変更 */
     max-width: 100%;
@@ -71,12 +65,34 @@
     /* 追加: 右端に寄せる */
 }
 
+/*count bar*/
+.countBar {
+    width: 100%;
+    height: 4vh;
+    display: flex;
+    align-items: center;
+    justify-content: left;
+    padding: 0 3rem;
+    box-sizing: border-box;
+    /* background-color: #f5f5f5;
+    color: #333; */
+}
+
 /* Main Container */
 .mainContainer {
     display: flex;
     width: 78vw;
     height: calc(100vh - 12vh);
     /* topBarとcountBarの高さを引いた分 */
+}
+
+.contentContainer {
+    width: 80vw;
+    margin-top: 2rem;
+    overflow-y: auto;
+    flex-grow: 1;
+    padding-bottom: 2rem;
+    /* background-color: turquoise; */
 }
 
 /* List Container */
@@ -87,22 +103,12 @@
     /* background-color: lightgray; */
 }
 
-/* Content Container */
-.contentContainer {
-    width: 80vw;
-    margin-top: 2rem;
-    overflow-y: auto;
-    flex-grow: 1;
-    padding-bottom: 2rem;
-    /* background-color: turquoise; */
-}
-
 /* Array Item Container */
 .arrayItemContainer {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    width: 80vw; 
+    width: 80vw;
     max-width: 1000px;
     padding: 1rem;
     margin: 1rem 0;
@@ -113,6 +119,7 @@
 
 .contentItem {
     border: 2px solid #ccc;
+    width: 70%;
     padding: 1.5rem;
     margin-bottom: 1rem;
     border-radius: 10px;
@@ -121,12 +128,14 @@
 .title {
     font-size: 1.2rem;
     font-weight: bold;
+    width: 70%;
     text-decoration: none;
     color: #65c3b0;
 }
 
 .author {
     font-size: 1rem;
+    width: 80%;
     color: #555;
 }
 
@@ -140,6 +149,43 @@
     font-size: 0.8rem;
     color: #999;
     margin-top: 0.5rem;
+}
+
+/* Radix UI Components Styling */
+.segmentedControl {
+    margin-bottom: 1rem;
+}
+
+.segmentedControlItem {
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+}
+
+.select {
+    margin-bottom: 1rem;
+}
+
+.selectTrigger {
+    width: 100%;
+    padding: 0.5rem;
+}
+
+.selectItem {
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+}
+
+.checkboxContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.checkboxCard {
+    display: flex;
+    align-items: center;
+    padding: 0.5rem;
+    cursor: pointer;
 }
 
 /**************************
