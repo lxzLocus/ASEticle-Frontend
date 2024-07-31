@@ -109,7 +109,8 @@
 .listLabel {
     font-size: 1rem;
     font-weight: bold;
-    margin-bottom: 1rem;
+    margin-bottom: 1.5rem;
+    padding-top: 1.5rem;
 }
 
 /* Array Item Container */
@@ -164,7 +165,7 @@
     align-items: center;
     justify-content: space-between;
     width: 85%;
-    margin-bottom: 2rem;
+    /* margin-bottom: 2rem; */
 }
 
 .segmentedControlItem {
@@ -183,7 +184,7 @@
     align-items: center;
     justify-content: center;
     width: 40%;
-    padding: 0.5rem;
+    /* padding: 0.5rem; */
     /* background-color: magenta; */
 }
 
@@ -198,8 +199,9 @@
 
 .checkboxContainer {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     gap: 0.5rem;
+    /* padding-top: 1rem; */
 }
 
 .checkboxCard {

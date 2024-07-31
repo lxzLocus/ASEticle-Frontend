@@ -140,7 +140,7 @@ function ContentItem({ item }: { item: Item }) {
 }
 
 function ListContainer() {
-    const [selectedItem, setSelectedItem] = useState("item1");
+    const [selectedItem, setSelectedItem] = useState("昇順");
 
     return (
         <div className={styles.listContainer}>
@@ -162,6 +162,25 @@ function ListContainer() {
                 </SegmentedControl.Item>
             </SegmentedControl.Root>
 
+            <Text className={styles.listLabel}>Filter Conference</Text>
+            <CheckboxCards.Root className={styles.checkboxContainer}>
+                <CheckboxCards.Item value="1">
+                    <Flex direction="column" width="100%">
+                        <Text weight="bold">ACM</Text>
+                    </Flex>
+                </CheckboxCards.Item>
+                <CheckboxCards.Item value="2">
+                    <Flex direction="column" width="100%">
+                        <Text weight="bold">Arxiv</Text>
+                    </Flex>
+                </CheckboxCards.Item>
+                <CheckboxCards.Item value="3">
+                    <Flex direction="column" width="100%">
+                        <Text weight="bold">IEEE</Text>
+                    </Flex>
+                </CheckboxCards.Item>
+            </CheckboxCards.Root>
+
             <Text className={styles.listLabel}>Sort Type Control</Text>
             <Select.Root 
                 size="3"
@@ -175,21 +194,6 @@ function ListContainer() {
                     <Select.Item value="降順" className={styles.selectItem}>Descending</Select.Item>
                 </Select.Content>
             </Select.Root>
-
-            {/* <div className={styles.checkboxContainer}>
-                <CheckboxCards checked className={styles.checkboxCard}>
-                    <CheckboxCards.Indicator />
-                    <CheckboxCards.Label>Checkbox 1</CheckboxCards.Label>
-                </CheckboxCards>
-                <CheckboxCards className={styles.checkboxCard}>
-                    <CheckboxCards.Indicator />
-                    <CheckboxCards.Label>Checkbox 2</CheckboxCards.Label>
-                </CheckboxCards>
-                <CheckboxCards className={styles.checkboxCard}>
-                    <CheckboxCards.Indicator />
-                    <CheckboxCards.Label>Checkbox 3</CheckboxCards.Label>
-                </CheckboxCards>
-            </div> */}
         </div>
     );
 }
