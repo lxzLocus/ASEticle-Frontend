@@ -133,7 +133,7 @@ function ContentItem({ item }: { item: Item }) {
                 </div>
             </div>
             <div className={styles.badgeContainer}>
-                <Badge variant="outline">Badge</Badge>
+                <Badge size="3" variant="outline" radius="large">Arxiv</Badge>
             </div>
         </div>
     );
@@ -159,6 +159,7 @@ function ListContainer() {
                     Item 3
                 </SegmentedControl.Item>
             </SegmentedControl.Root>
+
             <Select.Root value={selectedItem} onValueChange={(value) => setSelectedItem(value)} >
                 <Select.Trigger aria-label="Food" className={styles.selectTrigger}>
                     {/* <Select.Value placeholder="Select an item…" /> */}
@@ -169,6 +170,7 @@ function ListContainer() {
                     <Select.Item value="item3" className={styles.selectItem}>Item 3</Select.Item>
                 </Select.Content>
             </Select.Root>
+
             {/* <div className={styles.checkboxContainer}>
                 <CheckboxCards checked className={styles.checkboxCard}>
                     <CheckboxCards.Indicator />
