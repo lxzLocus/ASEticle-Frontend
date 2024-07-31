@@ -159,7 +159,7 @@ function ListContainer() {
                     Item 3
                 </SegmentedControl.Item>
             </SegmentedControl.Root>
-            <Select.Root value={selectedItem} onValueChange={(value) => setSelectedItem(value)} className={styles.select}>
+            <Select.Root value={selectedItem} onValueChange={(value) => setSelectedItem(value)} >
                 <Select.Trigger aria-label="Food" className={styles.selectTrigger}>
                     {/* <Select.Value placeholder="Select an item…" /> */}
                 </Select.Trigger>
