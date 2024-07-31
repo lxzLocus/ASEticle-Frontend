@@ -140,15 +140,21 @@ function ContentItem({ item }: { item: Item }) {
 }
 
 function ListContainer() {
-    const [selectedItem, setSelectedItem] = useState("昇順");
+    /*デフォルト値*/
+    const [segControlItem, setsegControlItem ]= useState("item1");
+
+    const [filterConf, setfilterConf] = useState(["1", "2", "3"]);
+    const [postDate, setpostDate] = useState("0");
+    const [sortBy, setsortBy] = useState("Relevance");
+    const [sortType, setsortType] = useState("昇順");
 
     return (
         <div className={styles.listContainer}>
-            <Text className={styles.listLabel}>Filter Conference</Text>
+            {/* <Text className={styles.listLabel}>Filter Conference</Text>
             <SegmentedControl.Root
                 size="3"
-                value={selectedItem}
-                onValueChange={(value) => setSelectedItem(value)}
+                value={segControlItem}
+                onValueChange={(value) => setsegControlItem(value)}
                 className={styles.segmentedControl}
             >
                 <SegmentedControl.Item value="item1" className={styles.segmentedControlItem}>
@@ -160,10 +166,13 @@ function ListContainer() {
                 <SegmentedControl.Item value="item3" className={styles.segmentedControlItem}>
                     Item 3
                 </SegmentedControl.Item>
-            </SegmentedControl.Root>
+            </SegmentedControl.Root> */}
 
             <Text className={styles.listLabel}>Filter Conference</Text>
-            <CheckboxCards.Root className={styles.checkboxContainer}>
+            <CheckboxCards.Root
+                className={styles.checkboxContainer}
+                value={filterConf} onValueChange={(value) => setfilterConf(value)}
+            >
                 <CheckboxCards.Item value="1">
                     <Flex direction="column" width="100%">
                         <Text weight="bold">ACM</Text>
@@ -181,12 +190,47 @@ function ListContainer() {
                 </CheckboxCards.Item>
             </CheckboxCards.Root>
 
-            <Text className={styles.listLabel}>Sort Type Control</Text>
+            <Text className={styles.listLabel}>Filter post date</Text>
+            <Select.Root
+                size="3"
+                value={postDate} onValueChange={(value) => setpostDate(value)}
+            >
+                <Select.Trigger aria-label="filterDate" className={styles.selectTrigger}>
+                    {/* <Select.Value placeholder="Select an item…" /> */}
+                </Select.Trigger>
+                <Select.Content>
+                    <Select.Item value="0" className={styles.selectItem}>Any</Select.Item>
+                    <Select.Item value="2024" className={styles.selectItem}>2024</Select.Item>
+                    <Select.Item value="2023" className={styles.selectItem}>2023</Select.Item>
+                    <Select.Item value="2022" className={styles.selectItem}>2022</Select.Item>
+                    <Select.Item value="2021" className={styles.selectItem}>2021</Select.Item>
+                    <Select.Item value="2020" className={styles.selectItem}>2020</Select.Item>
+                </Select.Content>
+            </Select.Root>
+
+            <Text className={styles.listLabel}>Sort by</Text>
+            <Select.Root
+                size="3"
+                value={sortBy} onValueChange={(value) => setsortBy(value)}
+            >
+                <Select.Trigger aria-label="sortBy" className={styles.selectTrigger}>
+                    {/* <Select.Value placeholder="Select an item…" /> */}
+                </Select.Trigger>
+                <Select.Content>
+                    <Select.Item value="Date" className={styles.selectItem}>Date</Select.Item>
+                    <Select.Item value="Relevance" className={styles.selectItem}>Relevance</Select.Item>
+                    <Select.Item value="ConferenceRank" className={styles.selectItem}>ConferenceRank</Select.Item>
+                    <Select.Item value="String" className={styles.selectItem}>String</Select.Item>
+                    <Select.Item value="Cite" className={styles.selectItem}>Cite</Select.Item>
+                </Select.Content>
+            </Select.Root>
+
+            <Text className={styles.listLabel}>Sort Type</Text>
             <Select.Root 
                 size="3"
-                value={selectedItem} onValueChange={(value) => setSelectedItem(value)} 
+                value={sortType} onValueChange={(value) => setsortType(value)} 
             >
-                <Select.Trigger aria-label="Food" className={styles.selectTrigger}>
+                <Select.Trigger aria-label="sortType" className={styles.selectTrigger}>
                     {/* <Select.Value placeholder="Select an item…" /> */}
                 </Select.Trigger>
                 <Select.Content>
