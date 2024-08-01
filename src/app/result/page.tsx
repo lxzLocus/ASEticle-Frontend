@@ -119,6 +119,8 @@ function Query() {
 }
 
 function ContentItem({ item }: { item: Item }) {
+    let citeName = getSiteName(item);
+
     return (
         <div className={styles.arrayItemContainer}>
             <div className={styles.itemDetails}>
@@ -133,7 +135,7 @@ function ContentItem({ item }: { item: Item }) {
                 </div>
             </div>
             <div className={styles.badgeContainer}>
-                <Badge size="3" variant="outline" radius="large">Arxiv</Badge>
+                <Badge size="3" variant="outline" radius="large">{citeName}</Badge>
             </div>
         </div>
     );
@@ -223,3 +225,20 @@ function ListContainer() {
         </div>
     );
 }
+
+
+const getSiteName = (item: Item): string | null => {
+    const allowedDomains: { [key: string]: string } = {
+        "https://arxiv.org/": "Arxiv",
+        "https://ieeexplore.ieee.org/": "IEEE",
+        "https://www.sciencedirect.com/": "ScienceDirect",
+        "https://dl.acm.org/": "ACM"
+    };
+
+    for (const domain in allowedDomains) {
+        if (item.url.startsWith(domain)) {
+            return allowedDomains[domain];
+        }
+    }
+    return null;
+};

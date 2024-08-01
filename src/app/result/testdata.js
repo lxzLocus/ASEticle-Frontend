@@ -13,7 +13,7 @@ export const data = [
         "tier": 1
     },
     {
-        "url": "https://arxiv.org/abs/2406.05621",
+        "url": "https://ieeexplore.ieee.org/2406.05621",
         "title": "Cross Language Soccer Framework: An Open Source Framework for the RoboCup 2D Soccer Simulation",
         "author": "Aref Sayareh, Jingzheng Wu, Xiang Ling, Amilcar Soares, Alireza Sadraii",
         "conference": "arXiv.org",
@@ -26,7 +26,7 @@ export const data = [
         "tier": 2
     },
     {
-        'url': 'https : //arxiv.org/pdf/2208.12743',
+        'url': 'https://dl.acm.org/2208.12743',
         'title': 'White-box Fuzzing RPC-based APIs with EvoMaster: An Industrial Case Study',
         'author': 'Man Zhang, Andrea Arcuri, Yonggang Li, ang Liu, aiming Xue',
         'conference': 'ACM Transactions on Software Engineering and Methodology',
@@ -39,7 +39,7 @@ export const data = [
         'tier': 6
     },
     {
-        'url': 'https : //arxiv.org/abs/2212.07475',
+        'url': 'https://arxiv.org/abs/2212.07475',
         'title': 'Comparative review of selected Internet communication protocols',
         'author': 'Łukasz Kamiński,Maciej Kozłowski,Daniel Sporysz,Katarzyna Wolska,Patryk Zaniewski,Radosław Roszczyk',
 		 'conference': 'Foundations of Computing and Decision Sciences',
@@ -52,7 +52,7 @@ export const data = [
         'tier':4
 	},
     {
-        'url': 'https : //arxiv.org/pdf/2208.12743',
+        'url': 'https://dl.acm.org/pdf/2208.12743',
         'title': 'White-box Fuzzing RPC-based APIs with EvoMaster: An Industrial Case Study',
         'author': 'Man Zhang, Andrea Arcuri, Yonggang Li, ang Liu, aiming Xue',
         'conference': 'ACM Transactions on Software Engineering and Methodology',
@@ -65,7 +65,7 @@ export const data = [
         'tier': 5
     },
     {
-        "url": "https://arxiv.org/abs/2403.00448",
+        "url": "https://ieeexplore.ieee.org/2403.00448",
         "title": "When Large Language Models Confront Repository-Level Automatic Program Repair: How Well They Done?",
         "author": "Yuxiao Chen, Jingzheng Wu, Xiang Ling",
         "conference": "2024 IEEE/ACM 46th International Conference on Software Engineering: Companion Proceedings (ICSE-Companion)",
@@ -104,7 +104,7 @@ export const data = [
         "tier": 2
     },
     {
-        'url': 'https : //arxiv.org/pdf/2208.12743',
+        'url': 'https://arxiv.org/pdf/2208.12743',
         'title': 'White-box Fuzzing RPC-based APIs with EvoMaster: An Industrial Case Study',
         'author': 'Man Zhang, Andrea Arcuri, Yonggang Li, ang Liu, aiming Xue',
         'conference': 'ACM Transactions on Software Engineering and Methodology',
@@ -117,7 +117,7 @@ export const data = [
         'tier': 6
     },
     {
-        'url': 'https : //arxiv.org/abs/2212.07475',
+        'url': 'https://ieeexplore.ieee.org/2212.07475',
         'title': 'Comparative review of selected Internet communication protocols',
         'author': 'Łukasz Kamiński,Maciej Kozłowski,Daniel Sporysz,Katarzyna Wolska,Patryk Zaniewski,Radosław Roszczyk',
         'conference': 'Foundations of Computing and Decision Sciences',
@@ -130,7 +130,7 @@ export const data = [
         'tier': 4
     },
     {
-        'url': 'https : //arxiv.org/pdf/2208.12743',
+        'url': 'https://arxiv.org/pdf/2208.12743',
         'title': 'White-box Fuzzing RPC-based APIs with EvoMaster: An Industrial Case Study',
         'author': 'Man Zhang, Andrea Arcuri, Yonggang Li, ang Liu, aiming Xue',
         'conference': 'ACM Transactions on Software Engineering and Methodology',
@@ -143,7 +143,7 @@ export const data = [
         'tier': 5
     },
     {
-        "url": "https://arxiv.org/abs/2403.00448",
+        "url": "https://ieeexplore.ieee.org/2403.00448",
         "title": "When Large Language Models Confront Repository-Level Automatic Program Repair: How Well They Done?",
         "author": "Yuxiao Chen, Jingzheng Wu, Xiang Ling",
         "conference": "2024 IEEE/ACM 46th International Conference on Software Engineering: Companion Proceedings (ICSE-Companion)",
@@ -182,7 +182,7 @@ export const data = [
         "tier": 2
     },
     {
-        'url': 'https : //arxiv.org/pdf/2208.12743',
+        'url': 'https://ieeexplore.ieee.org/2208.12743',
         'title': 'White-box Fuzzing RPC-based APIs with EvoMaster: An Industrial Case Study',
         'author': 'Man Zhang, Andrea Arcuri, Yonggang Li, ang Liu, aiming Xue',
         'conference': 'ACM Transactions on Software Engineering and Methodology',
@@ -195,7 +195,7 @@ export const data = [
         'tier': 6
     },
     {
-        'url': 'https : //arxiv.org/abs/2212.07475',
+        'url': 'https://arxiv.org/abs/2212.07475',
         'title': 'Comparative review of selected Internet communication protocols',
         'author': 'Łukasz Kamiński,Maciej Kozłowski,Daniel Sporysz,Katarzyna Wolska,Patryk Zaniewski,Radosław Roszczyk',
         'conference': 'Foundations of Computing and Decision Sciences',
@@ -208,7 +208,7 @@ export const data = [
         'tier': 4
     },
     {
-        'url': 'https : //arxiv.org/pdf/2208.12743',
+        'url': 'https://www.sciencedirect.com/2208.12743',
         'title': 'White-box Fuzzing RPC-based APIs with EvoMaster: An Industrial Case Study',
         'author': 'Man Zhang, Andrea Arcuri, Yonggang Li, ang Liu, aiming Xue',
         'conference': 'ACM Transactions on Software Engineering and Methodology',
@@ -221,7 +221,7 @@ export const data = [
         'tier': 5
     },
     {
-        "url": "https://arxiv.org/abs/2403.00448",
+        "url": "https://ieeexplore.ieee.org/2403.00448",
         "title": "When Large Language Models Confront Repository-Level Automatic Program Repair: How Well They Done?",
         "author": "Yuxiao Chen, Jingzheng Wu, Xiang Ling",
         "conference": "2024 IEEE/ACM 46th International Conference on Software Engineering: Companion Proceedings (ICSE-Companion)",
