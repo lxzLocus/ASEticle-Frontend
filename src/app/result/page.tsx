@@ -150,24 +150,6 @@ function ListContainer() {
 
     return (
         <div className={styles.listContainer}>
-            {/* <Text className={styles.listLabel}>Filter Conference</Text>
-            <SegmentedControl.Root
-                size="3"
-                value={segControlItem}
-                onValueChange={(value) => setsegControlItem(value)}
-                className={styles.segmentedControl}
-            >
-                <SegmentedControl.Item value="item1" className={styles.segmentedControlItem}>
-                    Item 1
-                </SegmentedControl.Item>
-                <SegmentedControl.Item value="item2" className={styles.segmentedControlItem}>
-                    Item 2
-                </SegmentedControl.Item>
-                <SegmentedControl.Item value="item3" className={styles.segmentedControlItem}>
-                    Item 3
-                </SegmentedControl.Item>
-            </SegmentedControl.Root> */}
-
             <Text className={styles.listLabel}>Filter Conference</Text>
             <CheckboxCards.Root
                 className={styles.checkboxContainer}
