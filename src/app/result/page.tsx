@@ -235,7 +235,7 @@ function ListContainer() {
                 </Select.Content>
             </Select.Root>
 
-
+            <Text className={styles.listLabel}></Text>
             <Button className={styles.Reloadbutton}>
                 <ReloadIcon /> Apply Filters
             </Button>

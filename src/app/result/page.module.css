@@ -205,6 +205,7 @@
     height: 2rem;
     padding: auto;
     cursor: pointer;
+    padding-bottom: 1rem;
 }
 
 .checkboxContainer {
@@ -223,10 +224,10 @@
 
 .Reloadbutton{
     display: flex;
-    align-items: center;
+    align-items: column;
     justify-content: center;
     /* Center align the button */
-    margin: 0 auto;
+    /* margin: 0 auto; */
     cursor: pointer;
 }
 
