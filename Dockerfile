@@ -9,5 +9,6 @@ RUN npm install -g next@14.2.4
 
 RUN yarn add @radix-ui/themes
 RUN yarn add @radix-ui/react-icons
+RUN yarn add fs
 
 COPY . .
