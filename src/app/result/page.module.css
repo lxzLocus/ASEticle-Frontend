@@ -68,7 +68,6 @@
 /*count bar*/
 .countBar {
     width: 100%;
-    max-height: 4rem;
     height: 4vh;
     display: flex;
     align-items: center;
@@ -146,19 +145,28 @@
 }
 
 .author {
-    font-size: 1rem;
+    font-size: 0.9rem;
     width: 80%;
     color: #555;
 }
 
 .abstract {
-    font-size: 0.9rem;
-    width: 60%;
+    display: block;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-size: 1.1rem;
+    width: 90%;
     color: #777;
 }
 
+.readMore {
+    color: rgb(0, 252, 223);
+    cursor: pointer;
+    margin-left: 5px;
+}
+
 .meta {
-    font-size: 0.8rem;
+    font-size: 1.1rem;
     color: #999;
     margin-top: 0.5rem;
 }
@@ -210,6 +218,15 @@
     display: flex;
     align-items: center;
     padding: 0.5rem;
+    cursor: pointer;
+}
+
+.Reloadbutton{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* Center align the button */
+    margin: 0 auto;
     cursor: pointer;
 }
 

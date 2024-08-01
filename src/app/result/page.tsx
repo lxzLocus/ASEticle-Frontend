@@ -1,8 +1,8 @@
 "use client";
 
 import '@radix-ui/themes/styles.css';
-import { Theme, Flex, Text, Box, TextField, IconButton, Switch, Badge, CheckboxCards, Select, SegmentedControl } from '@radix-ui/themes';
-import { MagnifyingGlassIcon, ArrowRightIcon } from '@radix-ui/react-icons';
+import { Theme, Flex, Text, Box, TextField, IconButton, Switch, Badge, CheckboxCards, Select, Button } from '@radix-ui/themes';
+import { MagnifyingGlassIcon, ArrowRightIcon, ReloadIcon } from '@radix-ui/react-icons';
 import styles from './page.module.css';
 import React, { useState, useEffect } from 'react';
 
@@ -84,7 +84,7 @@ export default function Home() {
                             : '0 2px 4px rgba(0, 0, 0, 0.1)'
                     }}
                 >
-                    <Text>Content Items: {data.length}</Text>
+                <Text>Content Items: {data.length}</Text>
                 </div>
                 <div className={styles.mainContainer}>
                     <ListContainer />
@@ -119,14 +119,27 @@ function Query() {
 }
 
 function ContentItem({ item }: { item: Item }) {
-    let citeName = getSiteName(item);
+    const [isExpanded, setIsExpanded] = useState(false);
+
+    const toggleExpanded = () => setIsExpanded(!isExpanded);
+
+    const MAX_LENGTH = 300; // maximum characters to display before "Read more"
+
+    const citeName = getSiteName(item);
 
     return (
         <div className={styles.arrayItemContainer}>
             <div className={styles.itemDetails}>
-                <a href={item.url} className={styles.title}>{item.title}</a>
+                <a href={item.url} className={styles.title} target="_blank" rel="noopener noreferrer">{item.title}</a>
                 <p className={styles.author}>{item.author}</p>
-                <p className={styles.abstract}>{item.abstract}</p>
+                <p className={styles.abstract}>
+                    {isExpanded ? item.abstract : item.abstract.substring(0, MAX_LENGTH)}
+                    {item.abstract.length > MAX_LENGTH && (
+                        <span className={styles.readMore} onClick={toggleExpanded}>
+                            {isExpanded ? ' Read less' : '... Read more'}
+                        </span>
+                    )}
+                </p>
                 <div className={styles.meta}>
                     <span>{item.date}</span> |
                     <span> {item.pages} pages</span> |
@@ -141,10 +154,9 @@ function ContentItem({ item }: { item: Item }) {
     );
 }
 
+
 function ListContainer() {
     /*デフォルト値*/
-    const [segControlItem, setsegControlItem ]= useState("item1");
-
     const [filterConf, setfilterConf] = useState(["1", "2", "3"]);
     const [postDate, setpostDate] = useState("0");
     const [sortBy, setsortBy] = useState("Relevance");
@@ -222,6 +234,11 @@ function ListContainer() {
                     <Select.Item value="降順" className={styles.selectItem}>Descending</Select.Item>
                 </Select.Content>
             </Select.Root>
+
+
+            <Button className={styles.Reloadbutton}>
+                <ReloadIcon /> Apply Filters
+            </Button>
         </div>
     );
 }
