@@ -6,15 +6,13 @@ var fs = require('fs');
 var refine = function (originJsonArray, options) {
     var returnArray = [];
     // 日付フィルタ
-    if (options.refineDate === 0) {
-        returnArray = originJsonArray.filter(function (item) { return parseInt(item.date) >= options.refineDate; });
+    if (options.refineDate === "0") {
+        returnArray = originJsonArray.filter(function (item) { return parseInt(item.date) >= parseInt(options.refineDate); });
     }
     else {
-        var refineDateStr = options.refineDate.toString();
-        refineDateStr = refineDateStr.slice(-2);
-        refineDateStr = refineDateStr + "0101";
-        options.refineDate = parseInt(refineDateStr);
-        returnArray = originJsonArray.filter(function (item) { return parseInt(item.date) >= options.refineDate; });
+        options.refineDate = options.refineDate.slice(-2);
+        options.refineDate = options.refineDate + "0101";
+        returnArray = originJsonArray.filter(function (item) { return parseInt(item.date) >= parseInt(options.refineDate); });
     }
     // acm, arxiv, ieee中でtrueの項目の要素を絞込み
     if (options.acm === true || options.arxiv === true || options.ieee === true) {

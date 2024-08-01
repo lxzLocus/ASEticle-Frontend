@@ -18,7 +18,7 @@ interface origJson {
 interface RefineOptions {
     type: string;
     sortType: string;
-    refineDate: number;
+    refineDate: string;
     acm: boolean;
     arxiv: boolean;
     ieee: boolean;
@@ -30,14 +30,12 @@ const refine = (originJsonArray: origJson[], options: RefineOptions): origJson[]
     let returnArray: origJson[] = [];
   
     // 日付フィルタ
-    if(options.refineDate === 0){
-        returnArray = originJsonArray.filter(item => parseInt(item.date) >= options.refineDate);
+    if(options.refineDate === "0"){
+        returnArray = originJsonArray.filter(item => parseInt(item.date) >= parseInt(options.refineDate));
     }else{
-        let refineDateStr = options.refineDate.toString();
-        refineDateStr = refineDateStr.slice(-2);
-        refineDateStr = refineDateStr + "0101";
-        options.refineDate = parseInt(refineDateStr);
-        returnArray = originJsonArray.filter(item => parseInt(item.date) >= options.refineDate);
+        options.refineDate = options.refineDate.slice(-2);
+        options.refineDate = options.refineDate + "0101";
+        returnArray = originJsonArray.filter(item => parseInt(item.date) >= parseInt(options.refineDate));
     }
     // acm, arxiv, ieee中でtrueの項目の要素を絞込み
     if(options.acm === true || options.arxiv === true || options.ieee === true){
