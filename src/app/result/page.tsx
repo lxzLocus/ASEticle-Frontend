@@ -2,7 +2,7 @@
 
 import '@radix-ui/themes/styles.css';
 import { Theme, Flex, Text, Box, TextField, IconButton, Switch, Badge, CheckboxCards, Select, Button } from '@radix-ui/themes';
-import { MagnifyingGlassIcon, ArrowRightIcon, ReloadIcon } from '@radix-ui/react-icons';
+import { MagnifyingGlassIcon, ArrowRightIcon, LayersIcon } from '@radix-ui/react-icons';
 import styles from './page.module.css';
 import React, { useState, useEffect, useRef } from 'react';
 import FetchScholarInfo from '@/features/api/FetchScholarInfo'; // ヤマギシ追加
@@ -127,7 +127,7 @@ export default function Home() {
 // ########## /resultの検索バーにもkeydownやonClick入れる
 // features/home/InputQuery.tsx#L38, 44参照
 
-function Query({ searchQuery, setSearchQuery, inputRef }: {searchQuery: string, setSearchQuery: React.Dispatch<React.SetStateAction<string>>, inputRef: React.RefObject<HTMLInputElement> }) {
+function Query({ searchQuery, setSearchQuery, inputRef }: { searchQuery: string, setSearchQuery: React.Dispatch<React.SetStateAction<string>>, inputRef: React.RefObject<HTMLInputElement> }) {
     const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const value = e.target.value;
         const cursorPosition = e.target.selectionStart;
@@ -139,21 +139,37 @@ function Query({ searchQuery, setSearchQuery, inputRef }: {searchQuery: string, 
         }
     };
 
+    const handleIconClick = () => {
+        if (searchQuery.trim() !== '') {
+            // 遷移処理をここに追加
+            console.log('Search query:', searchQuery);
+            window.location.href = `/result?query=${encodeURIComponent(searchQuery)}`;
+        }
+    };
+
+    const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
+        if (e.key === 'Enter') {
+            handleIconClick();
+        }
+    };
+
     return (
         <Flex direction="row" gap="3" className={styles.queryFlex}>
             <Box>
-                <TextField.Root placeholder="Search the scholar…"
+                <TextField.Root
+                    placeholder="Search the scholar…"
                     size="3"
                     className={styles.textField}
                     value={searchQuery}
                     onChange={handleInputChange}
                     ref={inputRef}
+                    onKeyDown={handleKeyDown} // Add this line
                 >
                     <TextField.Slot>
                         <MagnifyingGlassIcon height="16" width="16" />
                     </TextField.Slot>
                     <TextField.Slot pr="3">
-                        <IconButton size="2" variant="ghost">
+                        <IconButton size="2" variant="ghost" onClick={handleIconClick}>
                             <ArrowRightIcon height="16" width="16" />
                         </IconButton>
                     </TextField.Slot>
@@ -162,6 +178,10 @@ function Query({ searchQuery, setSearchQuery, inputRef }: {searchQuery: string, 
         </Flex>
     );
 }
+
+
+
+
 
 
 function ContentItem({ item }: { item: Item }) {
@@ -284,8 +304,8 @@ function ListContainer() {
             </Select.Root>
 
             <Text className={styles.listLabel}></Text>
-            <Button className={styles.Reloadbutton}>
-                <ReloadIcon /> Apply Filters
+            <Button className={styles.Reloadbutton} size="3" >
+                <LayersIcon /> Apply Filters
             </Button>
         </div>
     );
@@ -308,7 +328,7 @@ const getSiteName = (item: Item): string | null => {
     return null;
 };
 
-const getLabelClass = (siteName: string | null): string => {
+const getLabelClass = (siteName: string | null): "tomato" | "indigo" | "orange" | "gray" | undefined => {
     switch (siteName) {
         case 'Arxiv':
             return "tomato";
@@ -319,6 +339,6 @@ const getLabelClass = (siteName: string | null): string => {
         case 'ACM':
             return "gray";
         default:
-            return '';
+            return undefined;
     }
 };

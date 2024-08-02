@@ -1,8 +1,7 @@
 "use client";
 
 import '@radix-ui/themes/styles.css';
-import { Theme, Flex, Text, Box, TextField, IconButton, Switch } from '@radix-ui/themes';
-import { MagnifyingGlassIcon, ArrowRightIcon } from '@radix-ui/react-icons';
+import { Theme, Text,  Switch } from '@radix-ui/themes';
 import styles from './page.module.css';
 import React, { useState, useEffect } from 'react';
 import Query from '@/features/home/InputQuery';
