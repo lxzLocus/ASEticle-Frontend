@@ -1,4 +1,4 @@
-var fs = require('fs');
+//var fs = require('fs');
 ;
 // ここを呼び出す
 // 01

@@ -30,7 +30,8 @@
 .image {
     height: 5vh;
     max-height: 4.5rem;
-    margin-right: 3rem;
+    margin-right: 3vw;
+    padding-left: 4vw;
 }
 
 
@@ -39,14 +40,14 @@
     display: flex;
     flex: 1;
     justify-content: space-between;
-    width: 100%;
+    width: 60%;
     /* 必要に応じて幅を変更 */
-    max-width: 100%;
+    padding-left: 5vw;
 }
 
 .textField {
     max-height: 3rem;
-    min-height: 2.3rem;
+    min-height: 2rem;
     height: 3vh;
     width: 60vw;
     /* 必要に応じて幅を変更 */
@@ -74,25 +75,27 @@
     justify-content: left;
     padding: 0 4rem;
     box-sizing: border-box;
-    /* background-color: #f5f5f5;
-    color: #333; */
+
+    /* background-color: #f5f5f5;*/
 }
 
 /* Main Container */
 .mainContainer {
     display: flex;
     width: 100vw;
-    /* topBarとcountBarの高さを引いた分 */
-    height: calc(100vh - 12vh);
+    height: 100%;
+
     /* background-color: #ff0000; */
 }
 
 .contentContainer {
-    width: 80vw;
+    height: 100%;
+    width: 70vw;
     margin-top: 2rem;
     overflow-y: auto;
     flex-grow: 1;
     padding-bottom: 2rem;
+    padding-left: 5vw;
     /* background-color: turquoise; */
 }
 
@@ -104,6 +107,9 @@
     padding-top: 1rem;
     padding-left: 3rem;
     width: 25vw;
+    height: 100%;
+    overflow-y: auto;
+
     /* background-color: rgb(81, 255, 0); */
 }
 
@@ -249,6 +255,10 @@
         width: 80vw;
     }
 
+  .arrayItemContainer{
+    max-width: 950px;
+  }
+
     .listContainer {
         height: 80%;
         width: 20vw;
@@ -256,13 +266,17 @@
     }
 
     .checkboxContainer {
-        max-width: 300px;
+        max-width: 200px;
         width: 80%;
         display: flex;
         /*felex column*/
         flex-direction: column;
         gap: 0.5rem;
         /* padding-top: 1rem; */
+    }
+
+    .selectTrigger{
+        max-width: 200px;
     }
 }
 

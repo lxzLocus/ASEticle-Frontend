@@ -6,6 +6,7 @@ import { MagnifyingGlassIcon, ArrowRightIcon, LayersIcon } from '@radix-ui/react
 import styles from './page.module.css';
 import React, { useState, useEffect, useRef } from 'react';
 import FetchScholarInfo from '@/features/api/FetchScholarInfo'; // ヤマギシ追加
+import refine from '@/features/module/ref'; // ヤマギシ追加
 
 // testdata
 import { data } from './testdata.js';
@@ -29,7 +30,9 @@ export default function Home() {
     const [darkMode, setDarkMode] = useState(false);
     const [isClient, setIsClient] = useState(false);
     const [searchQuery, setSearchQuery] = useState('');
+    const [sortedData, setSortedData] = useState(data); // New state for sorted data
     const inputRef = useRef<HTMLInputElement>(null);
+
 
     useEffect(() => {
         const savedDarkMode = localStorage.getItem('darkMode');
@@ -46,10 +49,10 @@ export default function Home() {
                 const query = url.split('?query=')[1];
                 console.log("query: ", query);
                 setSearchQuery(query);
-                
+
                 if (query) {
                     const result = await FetchScholarInfo(query);
-                    console.log(result);
+                    refine(result, { refineDate: "0", acm: false, arxiv: false, ieee: false, type: "日付", sortType: "昇順" });
                 } else {
                     console.error("Query parameter is missing in the URL.");
                 }
@@ -64,7 +67,7 @@ export default function Home() {
     useEffect(() => {
         if (isClient) {
             localStorage.setItem('darkMode', JSON.stringify(darkMode));
-        }
+        }data
     }, [darkMode, isClient]);
 
     if (!isClient) {
@@ -72,6 +75,13 @@ export default function Home() {
     }
 
     const imageSrc = darkMode ? '/images/DarkMode.png' : '/images/Nomal.png';
+
+    const handleSortedDataUpdate = (sortedData: any) => {
+        setSortedData(sortedData);
+        console.log(sortedData)
+    };
+
+    
 
     return (
         <Theme
@@ -109,12 +119,12 @@ export default function Home() {
                             : '0 2px 4px rgba(0, 0, 0, 0.1)'
                     }}
                 >
-                <Text>Content Items: {data.length}</Text>
+                    <Text>Content Items: {data.length}</Text>
                 </div>
                 <div className={styles.mainContainer}>
-                    <ListContainer />
+                    <ListContainer onSortedDataUpdate={handleSortedDataUpdate} />
                     <div className={styles.contentContainer}>
-                        {data.map((item, index) => (
+                        {sortedData.map((item, index) => (
                             <ContentItem key={index} item={item} />
                         ))}
                     </div>
@@ -123,6 +133,8 @@ export default function Home() {
         </Theme>
     );
 }
+
+
 
 // ########## /resultの検索バーにもkeydownやonClick入れる
 // features/home/InputQuery.tsx#L38, 44参照
@@ -184,7 +196,7 @@ function Query({ searchQuery, setSearchQuery, inputRef }: { searchQuery: string,
 
 
 
-function ContentItem({ item }: { item: Item }) {
+const ContentItem: React.FC<{ item: any }> = ({ item }) => {// function ContentItem({ item }: { item: Item }) { 
     const [isExpanded, setIsExpanded] = useState(false);
 
     const toggleExpanded = () => setIsExpanded(!isExpanded);
@@ -223,12 +235,128 @@ function ContentItem({ item }: { item: Item }) {
 
 
 
-function ListContainer() {
+function ListContainer({ onSortedDataUpdate }: { onSortedDataUpdate: (data: any) => void }) {
     /*デフォルト値*/
     const [filterConf, setfilterConf] = useState(["1", "2", "3"]);
     const [postDate, setpostDate] = useState("0");
     const [sortBy, setsortBy] = useState("Relevance");
     const [sortType, setsortType] = useState("昇順");
+    
+    
+
+    const handleSortByChange = async (value: string) => { //handleSortByChangeはヤマギシ追加
+        setsortBy(value);
+        switch (value) {
+            case 'Date':
+                console.log('Date selected');
+                // Dateが選択されたときの処理
+                setsortBy('日付')
+                const option_date = {
+                    type: '日付',
+                    sortType: sortType,
+                    refineDate: postDate,
+                    acm: filterConf.includes("1"),
+                    arxiv: filterConf.includes("2"),
+                    ieee: filterConf.includes("3")
+                };
+                onSortedDataUpdate(await refine(data, option_date)); // Call the callback with the sorted data
+               
+                break;
+            case 'Relevance':
+                console.log('Relevance selected');
+                // Relevanceが選択されたときの処理
+                setsortBy('関連度')
+                const option_rel = {
+                    type: '関連度',
+                    sortType: sortType,
+                    refineDate: postDate,
+                    acm: filterConf.includes("1"),
+                    arxiv: filterConf.includes("2"),
+                    ieee: filterConf.includes("3")
+                };
+                onSortedDataUpdate(await refine(data, option_rel));
+                break;
+            case 'ConferenceRank':
+                console.log('ConferenceRank selected');
+                // ConferenceRankが選択されたときの処理
+                setsortBy('学会ランク')
+                const option_rank = {
+                    type: '学会ランク',
+                    sortType: sortType,
+                    refineDate: postDate,
+                    acm: filterConf.includes("1"),
+                    arxiv: filterConf.includes("2"),
+                    ieee: filterConf.includes("3")
+                };
+                onSortedDataUpdate(await refine(data, option_rank));
+                break;
+            case 'String':
+                console.log('String selected');
+                // Stringが選択されたときの処理
+                setsortBy('学会学術誌名')
+                const option_str = {
+                    type: '学会学術誌名',
+                    sortType: sortType,
+                    refineDate: postDate,
+                    acm: filterConf.includes("1"),
+                    arxiv: filterConf.includes("2"),
+                    ieee: filterConf.includes("3")
+                };
+                onSortedDataUpdate(await refine(data, option_str));
+                break;
+            case 'Cite':
+                console.log('Cite selected');
+                // Citeが選択されたときの処理
+                setsortBy('被引用数')
+                const option_cite = {
+                    type: '被引用数',
+                    sortType: sortType,
+                    refineDate: postDate,
+                    acm: filterConf.includes("1"),
+                    arxiv: filterConf.includes("2"),
+                    ieee: filterConf.includes("3")
+                };
+                onSortedDataUpdate(await refine(data, option_cite));
+                break;
+            default:
+                console.log('Unknown selection');
+        }
+    };
+    const handleSortByType = async (value: string) => { //handleSortByChangeはヤマギシ追加
+        setsortType(value);
+        switch (value) {
+            case '昇順':
+                console.log('昇順');
+                // Dateが選択されたときの処理
+                setsortType('昇順')
+                const option_up = {
+                    type: sortBy,
+                    sortType: '昇順',
+                    refineDate: postDate,
+                    acm: filterConf.includes("1"),
+                    arxiv: filterConf.includes("2"),
+                    ieee: filterConf.includes("3")
+                };
+                onSortedDataUpdate(await refine(data, option_up)); // Call the callback with the sorted data
+                break;
+            case '降順':
+                console.log('降順');
+                // Dateが選択されたときの処理
+                setsortType('降順')
+                const option_down = {
+                    type: sortBy,
+                    sortType: '降順',
+                    refineDate: postDate,
+                    acm: filterConf.includes("1"),
+                    arxiv: filterConf.includes("2"),
+                    ieee: filterConf.includes("3")
+                };
+                onSortedDataUpdate(await refine(data, option_down)); // Call the callback with the sorted data
+                break;
+            default:
+                console.log('Unknown selection');
+        }
+    }
 
     return (
         <div className={styles.listContainer}>
@@ -275,7 +403,7 @@ function ListContainer() {
             <Text className={styles.listLabel}>Sort by</Text>
             <Select.Root
                 size="3"
-                value={sortBy} onValueChange={(value) => setsortBy(value)}
+                value={sortBy} onValueChange={(value) => handleSortByChange(value)}//ヤマギシ変更
             >
                 <Select.Trigger aria-label="sortBy" className={styles.selectTrigger}>
                     {/* <Select.Value placeholder="Select an item…" /> */}
@@ -284,7 +412,7 @@ function ListContainer() {
                     <Select.Item value="Date" className={styles.selectItem}>Date</Select.Item>
                     <Select.Item value="Relevance" className={styles.selectItem}>Relevance</Select.Item>
                     <Select.Item value="ConferenceRank" className={styles.selectItem}>ConferenceRank</Select.Item>
-                    <Select.Item value="String" className={styles.selectItem}>String</Select.Item>
+                    {/* <Select.Item value="String" className={styles.selectItem}>String</Select.Item> */}
                     <Select.Item value="Cite" className={styles.selectItem}>Cite</Select.Item>
                 </Select.Content>
             </Select.Root>
@@ -292,7 +420,7 @@ function ListContainer() {
             <Text className={styles.listLabel}>Sort Type</Text>
             <Select.Root 
                 size="3"
-                value={sortType} onValueChange={(value) => setsortType(value)} 
+                value={sortType} onValueChange={(value) => handleSortByType(value)} 
             >
                 <Select.Trigger aria-label="sortType" className={styles.selectTrigger}>
                     {/* <Select.Value placeholder="Select an item…" /> */}
@@ -302,12 +430,12 @@ function ListContainer() {
                     <Select.Item value="降順" className={styles.selectItem}>Descending</Select.Item>
                 </Select.Content>
             </Select.Root>
-
-            <Text className={styles.listLabel}></Text>
+            {/* <Text className={styles.listLabel}></Text>
             <Button className={styles.Reloadbutton} size="3" >
                 <LayersIcon /> Apply Filters
-            </Button>
+            </Button> */}
         </div>
+        
     );
 }
 
@@ -342,3 +470,4 @@ const getLabelClass = (siteName: string | null): "tomato" | "indigo" | "orange" 
             return undefined;
     }
 };
+
