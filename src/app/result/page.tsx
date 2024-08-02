@@ -4,9 +4,10 @@ import '@radix-ui/themes/styles.css';
 import { Theme, Flex, Text, Box, TextField, IconButton, Switch, Badge, CheckboxCards, Select, Button } from '@radix-ui/themes';
 import { MagnifyingGlassIcon, ArrowRightIcon, ReloadIcon } from '@radix-ui/react-icons';
 import styles from './page.module.css';
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
+import FetchScholarInfo from '@/features/api/FetchScholarInfo'; // ヤマギシ追加
 
-//testdata
+// testdata
 import { data } from './testdata.js';
 
 // 定義
@@ -27,6 +28,8 @@ interface Item {
 export default function Home() {
     const [darkMode, setDarkMode] = useState(false);
     const [isClient, setIsClient] = useState(false);
+    const [searchQuery, setSearchQuery] = useState('');
+    const inputRef = useRef<HTMLInputElement>(null);
 
     useEffect(() => {
         const savedDarkMode = localStorage.getItem('darkMode');
@@ -34,6 +37,28 @@ export default function Home() {
             setDarkMode(JSON.parse(savedDarkMode));
         }
         setIsClient(true);
+    }, []);
+
+    useEffect(() => {
+        const fetchData = async () => {
+            try {
+                const url = window.location.href;
+                const query = url.split('?query=')[1];
+                console.log("query: ", query);
+                setSearchQuery(query);
+                
+                if (query) {
+                    const result = await FetchScholarInfo(query);
+                    console.log(result);
+                } else {
+                    console.error("Query parameter is missing in the URL.");
+                }
+            } catch (error) {
+                console.error("Error fetching data: ", error);
+            }
+        };
+
+        fetchData();
     }, []);
 
     useEffect(() => {
@@ -67,7 +92,7 @@ export default function Home() {
                     }}
                 >
                     <img src={imageSrc} alt="logo" className={styles.image} />
-                    <Query />
+                    <Query searchQuery={searchQuery} setSearchQuery={setSearchQuery} inputRef={inputRef} />
                     <div className={styles.switchLabelContainer}>
                         <Text className={styles.switchLabel}>Dark Mode</Text>
                         <Switch
@@ -99,11 +124,31 @@ export default function Home() {
     );
 }
 
-function Query() {
+// ########## /resultの検索バーにもkeydownやonClick入れる
+// features/home/InputQuery.tsx#L38, 44参照
+
+function Query({ searchQuery, setSearchQuery, inputRef }: {searchQuery: string, setSearchQuery: React.Dispatch<React.SetStateAction<string>>, inputRef: React.RefObject<HTMLInputElement> }) {
+    const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        const value = e.target.value;
+        const cursorPosition = e.target.selectionStart;
+        setSearchQuery(value);
+        if (inputRef.current) {
+            requestAnimationFrame(() => {
+                inputRef.current?.setSelectionRange(cursorPosition, cursorPosition);
+            });
+        }
+    };
+
     return (
         <Flex direction="row" gap="3" className={styles.queryFlex}>
             <Box>
-                <TextField.Root placeholder="Search the scholar…" size="3" className={styles.textField}>
+                <TextField.Root placeholder="Search the scholar…"
+                    size="3"
+                    className={styles.textField}
+                    value={searchQuery}
+                    onChange={handleInputChange}
+                    ref={inputRef}
+                >
                     <TextField.Slot>
                         <MagnifyingGlassIcon height="16" width="16" />
                     </TextField.Slot>
@@ -118,6 +163,7 @@ function Query() {
     );
 }
 
+
 function ContentItem({ item }: { item: Item }) {
     const [isExpanded, setIsExpanded] = useState(false);
 
@@ -126,6 +172,7 @@ function ContentItem({ item }: { item: Item }) {
     const MAX_LENGTH = 300; // maximum characters to display before "Read more"
 
     const citeName = getSiteName(item);
+    const labelColor = getLabelClass(citeName);
 
     return (
         <div className={styles.arrayItemContainer}>
@@ -148,11 +195,12 @@ function ContentItem({ item }: { item: Item }) {
                 </div>
             </div>
             <div className={styles.badgeContainer}>
-                <Badge size="3" variant="outline" radius="large">{citeName}</Badge>
+                <Badge size="3" variant="outline" radius="large" color={labelColor}>{citeName}</Badge>
             </div>
         </div>
     );
 }
+
 
 
 function ListContainer() {
@@ -196,7 +244,7 @@ function ListContainer() {
                 </Select.Trigger>
                 <Select.Content>
                     <Select.Item value="0" className={styles.selectItem}>Any time</Select.Item>
-                    <Select.Item value="2024" className={styles.selectItem}>since 2024</Select.Item>
+                    <Select.Item value="2024" className={styles.selectItem}>since 2024</Select.Item> 
                     <Select.Item value="2023" className={styles.selectItem}>since 2023</Select.Item>
                     <Select.Item value="2022" className={styles.selectItem}>since 2022</Select.Item>
                     <Select.Item value="2021" className={styles.selectItem}>since 2021</Select.Item>
@@ -258,4 +306,19 @@ const getSiteName = (item: Item): string | null => {
         }
     }
     return null;
+};
+
+const getLabelClass = (siteName: string | null): string => {
+    switch (siteName) {
+        case 'Arxiv':
+            return "tomato";
+        case 'IEEE':
+            return "indigo"
+        case 'ScienceDirect':
+            return "orange";
+        case 'ACM':
+            return "gray";
+        default:
+            return '';
+    }
 };

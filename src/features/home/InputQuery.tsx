@@ -1,34 +1,52 @@
 "use client";
-import React, { useState } from "react";
-import FetchScholarInfo from "../api/FetchScholarInfo";
 
-export const InputQuery = () => {
-	const [query, setQuery] = useState("");
-	const [contents, setContents] = useState("default");
+import '@radix-ui/themes/styles.css';
+import { Flex, Box, TextField, IconButton } from '@radix-ui/themes';
+import { MagnifyingGlassIcon, ArrowRightIcon } from '@radix-ui/react-icons';
+import styles from '@/app/page.module.css';
+import React, { useState, useEffect } from 'react';
+import FetchScholarInfo from '@/features/api/FetchScholarInfo';
+import { useRouter } from 'next/navigation';
 
-	const handleSearch = async (e: any) => {
-		e.preventDefault();
-		const response = await FetchScholarInfo(query);
-		if (!response || response["result"] === undefined) {
-			alert("論文情報の取得に失敗しました...");
-		} else {
-			setContents(response["result"][0]["title"]);
-			alert("論文情報の取得に成功しました!");
-		}
-	}
+export default function Query() {
+    const router = useRouter();
+    const [searchText, setSearchText] = useState('');
 
-	return (
-		<div>
-			<form onSubmit={handleSearch}>
-				<input
-					type="text"
-					placeholder="クエリを入力"
-					value={query}
-					onChange={(e) => setQuery(e.target.value)}
-				/>
-				<button type="submit">Search</button>
-			</form>
-			{contents}
-		</div>
-	);
+    const handleInputChange = (e: any) => {
+        setSearchText(e.target.value);
+    };
+
+    const handleSubmit = async () => {
+        router.push(`/result?query=${encodeURIComponent(searchText)}`);
+    }
+
+    const handleKeyDown = (e: any) => {
+        if (e.key === 'Enter') {
+            e.preventDefault();
+            handleSubmit();
+        }
+    };
+
+    return (
+        <Flex direction="column" gap="3" className={styles.queryContainer}>
+            <Box>
+                <TextField.Root
+                    placeholder="Search the scholar…"
+                    size="3"
+                    className={styles.textField}
+                    onChange={(e)=>handleInputChange(e)}
+                    onKeyDown={handleKeyDown}
+                >
+                    <TextField.Slot>
+                        <MagnifyingGlassIcon height="16" width="16" />
+                    </TextField.Slot>
+                    <TextField.Slot pr="3">
+                        <IconButton size="2" variant="ghost" onClick={handleSubmit}>
+                            <ArrowRightIcon height="16" width="16" />
+                        </IconButton>
+                    </TextField.Slot>
+                </TextField.Root>
+            </Box>
+        </Flex>
+    );
 };
