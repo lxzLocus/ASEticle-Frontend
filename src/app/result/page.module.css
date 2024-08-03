@@ -6,9 +6,6 @@
     flex-direction: column;
     align-items: center;
     justify-content: flex-start;
-    /* height: 100vh;*/
-    width: 100%;
-    overflow: hidden;
     /* background-color: magenta; */
 }
 
@@ -31,7 +28,7 @@
     height: 5vh;
     max-height: 4.5rem;
     margin-right: 3vw;
-    padding-left: 4vw;
+    padding-left: 3vw;
 }
 
 
@@ -40,7 +37,7 @@
     display: flex;
     flex: 1;
     justify-content: space-between;
-    width: 60%;
+    width: 100%;
     /* 必要に応じて幅を変更 */
     padding-left: 5vw;
 }
@@ -92,7 +89,6 @@
     height: 100%;
     width: 70vw;
     margin-top: 2rem;
-    overflow-y: auto;
     flex-grow: 1;
     padding-bottom: 2rem;
     padding-left: 5vw;
@@ -107,8 +103,7 @@
     padding-top: 1rem;
     padding-left: 3rem;
     width: 25vw;
-    height: 100%;
-    overflow-y: auto;
+    height: 100vh;
 
     /* background-color: rgb(81, 255, 0); */
 }
@@ -153,6 +148,7 @@
 .author {
     font-size: 0.9rem;
     width: 80%;
+    padding: 0.5rem;
     color: #555;
 }
 
@@ -199,18 +195,18 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 50%;
+    width: 100%;
     /* background-color: magenta; */
 }
 
 /* Select Item */
 .selectItem {
     display: flex;
-    flex-direction: row;
     align-items: center;
     justify-content: center;
-    width: auto;
+    width: 100%;
     padding: 0.5rem 1rem;
+    margin: 0.25rem 0;
     cursor: pointer;
 }
 
@@ -230,13 +226,13 @@
     cursor: pointer;
 }
 
-.Reloadbutton{
-    display: flex;
-    align-items: column;
-    justify-content: center;
-    margin-top: 1rem;
-    cursor: pointer;
+
+.dialogContent{
+    width: 50%;
+    max-width: "450px";
 }
+
+
 
 /**************************
 ラベルカラー設定
@@ -255,12 +251,11 @@
         width: 80vw;
     }
 
-  .arrayItemContainer{
-    max-width: 950px;
-  }
+    .arrayItemContainer {
+        max-width: 950px;
+    }
 
     .listContainer {
-        height: 80%;
         width: 20vw;
         /* 幅を20vwに設定 */
     }
@@ -275,23 +270,28 @@
         /* padding-top: 1rem; */
     }
 
-    .selectTrigger{
+    .selectTrigger {
         max-width: 200px;
     }
 }
 
 /* Tablet ビューポート幅 : 600px~1200px */
 @media (min-width: 600px) and (max-width: 1200px) {
-    .topBar{
-        min-height: 75px;
+    .topBar {
+        min-height: 50px;
+        height: 10vh;
+    }
+
+    .image {
+        height: 6vh;
     }
 
     .textField {
         max-width: 600px;
     }
 
-    .countBar{
-        height: 5vh;
+    .countBar {
+        height: 7vh;
     }
 
     .arrayItemContainer {
@@ -308,7 +308,6 @@
     }
 
     .listContainer {
-        height: 80%;
         width: 20vw;
         /* 幅を20vwに設定 */
     }
@@ -327,7 +326,7 @@
         display: flex;
         align-items: center;
         justify-content: center;
-        width: 70%;
+        width: 80%;
         /* background-color: magenta; */
     }
 }

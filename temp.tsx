@@ -56,7 +56,7 @@ export default function Home() {
                     const result = await FetchScholarInfo(query);
                     console.log("結果", result);
 
-                    refine(result, { refineDate: "0", acm: false, arxiv: false, ieee: false, type: "date", sortType: "昇順" });
+                    refine(result, { refineDate: "0", acm: false, arxiv: false, ieee: false, type: "日付", sortType: "昇順" });
                 } else {
                     console.error("Query parameter is missing in the URL.");
                 }
@@ -81,6 +81,7 @@ export default function Home() {
     const imageSrc = darkMode ? '/images/DarkMode.png' : '/images/Nomal.png';
 
     const handleSortedDataUpdate = (sortedData: any) => {
+
         setSortedData(sortedData);
         console.log("sortdata", sortedData)
     };
@@ -237,7 +238,7 @@ function ListContainer({ onSortedDataUpdate }: { onSortedDataUpdate: (data: any)
     /*デフォルト値*/
     const [filterConf, setfilterConf] = useState(["1", "2", "3"]);
     const [postDate, setpostDate] = useState("0");
-    const [sortBy, setsortBy] = useState("relevant_no");
+    const [sortBy, setsortBy] = useState("Relevance");
     const [sortType, setsortType] = useState("昇順");
 
     const [isDialogOpen, setIsDialogOpen] = useState(false);
@@ -254,9 +255,9 @@ function ListContainer({ onSortedDataUpdate }: { onSortedDataUpdate: (data: any)
             case 'Date':
                 console.log('Date selected');
                 // Dateが選択されたときの処理
-                setsortBy('date')
+                setsortBy('日付')
                 const option_date = {
-                    type: 'date',
+                    type: '日付',
                     sortType: sortType,
                     refineDate: postDate,
                     acm: filterConf.includes("1"),
@@ -269,9 +270,9 @@ function ListContainer({ onSortedDataUpdate }: { onSortedDataUpdate: (data: any)
             case 'Relevance':
                 console.log('Relevance selected');
                 // Relevanceが選択されたときの処理
-                setsortBy('relevant_no')
+                setsortBy('関連度')
                 const option_rel = {
-                    type: 'relevant_no',
+                    type: '関連度',
                     sortType: sortType,
                     refineDate: postDate,
                     acm: filterConf.includes("1"),
@@ -283,9 +284,9 @@ function ListContainer({ onSortedDataUpdate }: { onSortedDataUpdate: (data: any)
             case 'ConferenceRank':
                 console.log('ConferenceRank selected');
                 // ConferenceRankが選択されたときの処理
-                setsortBy('tier')
+                setsortBy('学会ランク')
                 const option_rank = {
-                    type: 'tier',
+                    type: '学会ランク',
                     sortType: sortType,
                     refineDate: postDate,
                     acm: filterConf.includes("1"),
@@ -311,9 +312,9 @@ function ListContainer({ onSortedDataUpdate }: { onSortedDataUpdate: (data: any)
             case 'Cite':
                 console.log('Cite selected');
                 // Citeが選択されたときの処理
-                setsortBy('cite_num')
+                setsortBy('被引用数')
                 const option_cite = {
-                    type: 'cite_num',
+                    type: '被引用数',
                     sortType: sortType,
                     refineDate: postDate,
                     acm: filterConf.includes("1"),
@@ -363,7 +364,7 @@ function ListContainer({ onSortedDataUpdate }: { onSortedDataUpdate: (data: any)
         }
     }
 
-    // dateフィルタ関連
+    // 日付フィルタ関連
     const handlePostByDate = async (value: string) => { //handleSortByDateはヤマギシ追加
         setpostDate(value);
         switch (value) {

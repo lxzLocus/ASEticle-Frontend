@@ -11,35 +11,38 @@ export default function refine(originJsonArray, options) {
   if (options.acm || options.arxiv || options.ieee) {
     returnArray = returnArray.filter(item => {
       const domain = new URL(item.url).hostname;
-      if (options.acm && domain === 'dl.acm.org') return true;
-      if (options.arxiv && domain === 'arxiv.org') return true;
-      if (options.ieee && domain === 'ieeexplore.ieee.org') return true;
+      if (options.acm && domain === 'dl.acm.org')return true;
+      if (options.arxiv && domain === 'arxiv.org')return true;
+      if (options.ieee && domain === 'ieeexplore.ieee.org')return true;
       return false;
     });
   }
   returnArray = sort(options.type, options.sortType, returnArray);
+  console.log(`REFINE++${returnArray}`);
   return returnArray;
 }
 
 function sort(type, sortType, nowJsonArray) {
   let returnArray = [];
+  console.log(`type : ${type}, sortType : ${sortType}`);
   switch (type) {
-    case "日付":
+    case "date":
       returnArray = sortType === "昇順" ? sortByDateAsc(nowJsonArray) : sortByDateDesc(nowJsonArray);
       break;
-    case "関連度":
+    case "relevant_no":
       returnArray = sortType === "昇順" ? sortByRelevantNoAsc(nowJsonArray) : sortByRelevantNoDesc(nowJsonArray);
       break;
-    case "学会ランク":
+    case "tier":
       returnArray = sortType === "昇順" ? sortByTierAsc(nowJsonArray) : sortByTierDesc(nowJsonArray);
       break;
     case "学会学術誌名":
       returnArray = sortType === "昇順" ? sortByConferenceAsc(nowJsonArray) : sortByConferenceDesc(nowJsonArray);
       break;
-    case "被引用数":
+    case "cite_num":
       returnArray = sortType === "昇順" ? sortByCiteNumAsc(nowJsonArray) : sortByCiteNumDesc(nowJsonArray);
       break;
   }
+ 
   return returnArray;
 }
 

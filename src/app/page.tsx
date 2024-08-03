@@ -6,7 +6,6 @@ import styles from './page.module.css';
 import React, { useState, useEffect } from 'react';
 import Query from '@/features/home/InputQuery';
 
-
 export default function Home() {
 	const [darkMode, setDarkMode] = useState(false);
 	const [isClient, setIsClient] = useState(false);

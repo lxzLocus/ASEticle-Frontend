@@ -9,7 +9,6 @@ function getStaticProps(){
 // ここを呼び出す
 // 01
 var refine = function (originJsonArray, options) {
-    print('いい')
     var returnArray = [];
     // 日付フィルタ
     if (options.refineDate === "0") {
