@@ -1,0 +1,101 @@
+/**************************
+コンテナ設定
+**************************/
+
+/*Text Field*/
+.centeredContainer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    height: 80vh;
+    transform: translateY(0%);
+    /* background-color: #47ff78; */
+}
+
+.queryContainer {
+    width: 80vw;
+    max-width: 650px;
+    height: 30vh;
+    max-height: 800px;
+    /* background-color: #ed28ed; */
+}
+
+.textField {
+    width: 100%;
+    max-width: 100%;
+}
+
+/*Image*/
+.image {
+    max-width: 75%;
+    height: auto;
+    margin: 0 auto;
+    margin-bottom: 50px;
+    margin-top: -20px;
+    /* background-color: #0800eb; */
+}
+
+/*Toggle Switch*/
+.switchLabelContainer {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+
+    position: absolute;
+    top: 50px;
+    right: 50px;
+    /* background-color: #eb4034; */
+}
+
+.switchLabel {
+    font-size: 14px;
+}
+
+
+
+/* Array Item Container */
+.arrayItemContainer {
+    width: 80vw;
+    max-width: 800px;
+    padding: 1rem;
+    margin: 1rem 0;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    background-color: #fff;
+}
+
+/* ディスプレイごとの設定 */
+/*Desktop ビューポート幅 : 1200px~*/
+@media (min-width: 1200px) {
+    .queryContainer {
+        width: 60vw;
+    }
+}
+
+/*Tablet ビューポート幅 : 600px~1200px*/
+@media (min-width: 600px) and (max-width: 1200px) {
+    .centeredContainer {
+        transform: translateY(5%);
+    }
+
+    .queryContainer {
+        width: 60vw;
+    }
+}
+
+/*Mobile ビューポート幅 : ~600px*/
+@media (max-width: 600px) {
+    .centeredContainer {
+        transform: translateY(0%);
+    }
+
+    .queryContainer {
+        width: 80vw;
+    }
+
+    .arrayItemContainer {
+        width: 90vw;
+    }
+}

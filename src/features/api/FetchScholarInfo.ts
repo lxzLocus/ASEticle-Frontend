@@ -1,6 +1,6 @@
 const FetchScholarInfo = async (query: string) => {
 	try {
-		const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/execute?params=scholar`, {
+		const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/execute?params=${query}`, {
 			method: 'GET',
 			headers: {
 				'Content-Type': 'application/json'
@@ -12,8 +12,9 @@ const FetchScholarInfo = async (query: string) => {
 		}
 
 		const data = await response.json();
+		console.log("response data: ", data);
 
-		return data;
+		return {"data": data };
 	} catch (error) {
 		return { 'error': error };
 	}
