@@ -1,6 +1,3 @@
-//cd /app/config/api
-//python -m grpc_tools.protoc -I./ --pyi_out=./pkg/ --python_out=./pkg/ --grpc_python_out=./pkg/ ./service.proto
-
 
 syntax = "proto3";
 

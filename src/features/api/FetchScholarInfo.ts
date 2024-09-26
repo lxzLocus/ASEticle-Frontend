@@ -12,7 +12,7 @@ const packageDefinition = loadSync(PROTO_PATH, {
 	oneofs: true
 });
 
-const serviceProto = loadPackageDefinition(packageDefinition).your_service_package as any;
+const serviceProto = loadPackageDefinition(packageDefinition).searchscholar as any;
 
 // gRPCクライアントを作成する
 const client = new serviceProto.SearchScholar(
