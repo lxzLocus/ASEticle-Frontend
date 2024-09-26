@@ -1,5 +1,11 @@
-var fs = require('fs');
-;
+import fs from 'fs'
+
+export default refine
+
+function getStaticProps(){
+
+}
+
 // ここを呼び出す
 // 01
 var refine = function (originJsonArray, options) {
@@ -43,28 +49,32 @@ var sort = function (type, sortType, nowJsonArray) {
             break;
         case "関連度":
             if (sortType === "昇順") {
+                console.log(nowJsonArray)
                 returnArray = sortByRelevantNoAsc(nowJsonArray);
             }
             else {
+                console.log(nowJsonArray)
                 returnArray = sortByRelevantNoDesc(nowJsonArray);
             }
             break;
         case "学会ランク":
             if (sortType === "昇順") {
+                console.log(nowJsonArray)
                 returnArray = sortByTierAsc(nowJsonArray);
             }
             else {
+                console.log(nowJsonArray)
                 returnArray = sortByTierDesc(nowJsonArray);
             }
             break;
-        case "学会学術誌名":
+        /*case "学会学術誌名":
             if (sortType === "昇順") {
                 returnArray = sortByConferenceAsc(nowJsonArray);
             }
             else {
                 returnArray = sortByConferenceDesc(nowJsonArray);
             }
-            break;
+            break;*/
         case "被引用数":
             if (sortType === "昇順") {
                 returnArray = sortByCiteNumAsc(nowJsonArray);
@@ -113,7 +123,7 @@ function sortByTierDesc(data) {
     });
 }
 // 学会・学術誌名昇順に並べ替える関数
-function sortByConferenceAsc(data) {
+/*function sortByConferenceAsc(data) {
     return data.sort(function (a, b) {
         var conferenceCompare = a.conference.localeCompare(b.conference);
         return conferenceCompare !== 0 ? conferenceCompare : a.relevant_no - b.relevant_no;
@@ -125,7 +135,7 @@ function sortByConferenceDesc(data) {
         var conferenceCompare = b.conference.localeCompare(a.conference);
         return conferenceCompare !== 0 ? conferenceCompare : a.relevant_no - b.relevant_no;
     });
-}
+}*/
 // 被引用数昇順に並べ替える関数
 function sortByCiteNumAsc(data) {
     return data.sort(function (a, b) {
