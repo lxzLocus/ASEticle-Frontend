@@ -14,5 +14,8 @@ RUN yarn add @grpc/proto-loader
 RUN yarn add grpc-web google-protobuf
 RUN yarn add grpc-tools grpc_tools_node_protoc_ts
 RUN yarn add fs
+RUN yarn add next-auth
+
+
 
 COPY . .
