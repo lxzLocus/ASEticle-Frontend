@@ -573,7 +573,7 @@ function ListContainer({ onSortedDataUpdate }: { onSortedDataUpdate: (data: any)
                             </Text>
                             <TextField.Root
                                 value={sinceDate}
-                                onValueChange={(e) => setSinceDate(e.target.value)}
+                                onChange={(e) => setSinceDate(e.target.value)}
                                 placeholder="Enter since date"
                             />
                         </label>
@@ -582,9 +582,9 @@ function ListContainer({ onSortedDataUpdate }: { onSortedDataUpdate: (data: any)
                                 From
                             </Text>
                             <TextField.Root
-                                value={fromDate}
-                                onValueChange={(e) => setFromDate(e.target.value)}
-                                placeholder="Enter from date"
+                                value={sinceDate}
+                                onChange={(e) => setSinceDate(e.target.value)}
+                                placeholder="Enter since date"
                             />
                         </label>
                     </Flex>
