@@ -1,9 +1,9 @@
 "use client";
 
-import '@radix-ui/themes/styles.css';
-import { Theme, Flex, Text, Box, TextField, IconButton, Switch, Badge, CheckboxCards, Select, Button } from '@radix-ui/themes';
-import { MagnifyingGlassIcon, ArrowRightIcon, LayersIcon } from '@radix-ui/react-icons';
-import * as Dialog from '@radix-ui/react-dialog';
+import 'node_modules/@radix-ui/themes/styles.css';
+import { Theme, Flex, Text, Box, TextField, IconButton, Switch, Badge, CheckboxCards, Select, Button } from 'node_modules/@radix-ui/themes';
+import { MagnifyingGlassIcon, ArrowRightIcon, LayersIcon } from 'node_modules/@radix-ui/react-icons';
+import * as Dialog from 'node_modules/@radix-ui/react-dialog';
 import styles from './page.module.css';
 import React, { useState, useEffect, useRef } from 'react';
 import FetchScholarInfo from '@/features/api/FetchScholarInfo'; // ヤマギシ追加
