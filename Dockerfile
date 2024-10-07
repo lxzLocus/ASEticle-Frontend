@@ -2,15 +2,19 @@ FROM node:alpine3.19
 
 WORKDIR /app
 
-COPY package.json .
+COPY package.json yarn.lock ./
 
-# Install npm package
-RUN npm install -g next@14.2.4
+# Install dependencies using yarn
+RUN yarn install
 
-RUN yarn add @radix-ui/themes@3.1.3
-RUN yarn add @radix-ui/react-icons@1.3.0
-RUN yarn add fs@0.0.1-security
-RUN yarn add next-auth@4.24.8
+# Install global npm package
+RUN yarn global add next@14.2.4
+
+# Add additional npm packages
+CMD yarn add @radix-ui/themes@3.1.3
+CMD yarn add @radix-ui/react-icons@1.3.0
+CMD yarn add fs@0.0.1-security
+CMD yarn add next-auth@4.24.8
 
 COPY . .
 
