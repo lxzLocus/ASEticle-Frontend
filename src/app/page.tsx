@@ -1,7 +1,7 @@
 "use client";
 
-import '@radix-ui/themes/styles.css';
-import { Theme, Text,  Switch } from '@radix-ui/themes';
+import 'node_modules/@radix-ui/themes/styles.css';
+import { Theme, Text, Switch } from 'node_modules/@radix-ui/themes';
 import styles from './page.module.css';
 import React, { useState, useEffect } from 'react';
 import Query from '@/features/home/InputQuery';
