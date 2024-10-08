@@ -9,6 +9,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import FetchScholarInfo from '@/features/api/FetchScholarInfo'; // ヤマギシ追加
 import refine from '@/features/module/ref'; // ヤマギシ追加
 import { useRouter } from 'next/navigation';
+import { useSession } from "next-auth/react"; // 追加
 
 // testdata
 import { data } from './testdata.js';
@@ -82,7 +83,7 @@ export default function Home() {
 
     const handleSortedDataUpdate = (sortedData: any) => {
         setSortedData(sortedData);
-        console.log("sortdata", sortedData)
+        console.log("sortdata", sortedData);
     };
 
     const handleImageClick = () => {

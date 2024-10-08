@@ -5,10 +5,14 @@ import { Theme, Text,  Switch } from '@radix-ui/themes';
 import styles from './page.module.css';
 import React, { useState, useEffect } from 'react';
 import Query from '@/features/home/InputQuery';
+import { useSession } from "next-auth/react";
+
+
 
 export default function Home() {
 	const [darkMode, setDarkMode] = useState(false);
 	const [isClient, setIsClient] = useState(false);
+
 
 	useEffect(() => {		
 		const savedDarkMode = localStorage.getItem('darkMode');
