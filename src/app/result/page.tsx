@@ -2,7 +2,7 @@
 
 import '@radix-ui/themes/styles.css';
 import { Theme, Flex, Text, Box, TextField, IconButton, Switch, Badge, CheckboxCards, Select, Button } from '@radix-ui/themes';
-import { MagnifyingGlassIcon, ArrowRightIcon, LayersIcon } from '@radix-ui/react-icons';
+import { MagnifyingGlassIcon, ArrowRightIcon, LayersIcon } from '@radix-ui/react-icons'; 
 import * as Dialog from '@radix-ui/react-dialog';
 import styles from './page.module.css';
 import React, { useState, useEffect, useRef } from 'react';
@@ -574,7 +574,7 @@ function ListContainer({ onSortedDataUpdate }: { onSortedDataUpdate: (data: any)
                             </Text>
                             <TextField.Root
                                 value={sinceDate}
-                                onValueChange={(e) => setSinceDate(e.target.value)}
+                                onChange={(e) => setSinceDate(e.target.value)}
                                 placeholder="Enter since date"
                             />
                         </label>
@@ -584,7 +584,7 @@ function ListContainer({ onSortedDataUpdate }: { onSortedDataUpdate: (data: any)
                             </Text>
                             <TextField.Root
                                 value={fromDate}
-                                onValueChange={(e) => setFromDate(e.target.value)}
+                                onChange={(e) => setFromDate(e.target.value)}
                                 placeholder="Enter from date"
                             />
                         </label>
