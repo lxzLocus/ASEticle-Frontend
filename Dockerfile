@@ -4,13 +4,9 @@ WORKDIR /app
 
 COPY package.json yarn.lock ./
 
-# Install dependencies using yarn
-RUN yarn install
+# Install npm package
+RUN npm install -g next@14.2.4
 
-# Install global npm package
-RUN yarn global add next@14.2.4
-
-# Add additional npm packages
 RUN yarn add @radix-ui/themes@3.1.3
 RUN yarn add @radix-ui/react-icons@1.3.0
 RUN yarn add fs@0.0.1-security
