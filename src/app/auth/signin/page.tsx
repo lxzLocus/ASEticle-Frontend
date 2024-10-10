@@ -54,10 +54,9 @@ export default function SignInClient() {
               )}
               {session && (
                   <>
-                      name:{session.user.name} <br />
+                      name:{session} <br />
                       image:
                       <img
-                          src={session.user.image}
                           alt="icon"
                           style={{ width: "100px", height: "100px" }}
                       />
