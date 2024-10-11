@@ -18,7 +18,7 @@ export default function SignInClient() {
             setDarkMode(JSON.parse(savedDarkMode));
         }
         setIsClient(true);
-    }, []);
+    }, []); 
 
     useEffect(() => {
         if (isClient) {

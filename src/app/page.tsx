@@ -4,7 +4,7 @@ import '@radix-ui/themes/styles.css';
 import { Theme, Text,  Switch } from '@radix-ui/themes';
 import styles from './page.module.css';
 import React, { useState, useEffect } from 'react';
-import Query from '@/features/home/InputQuery';
+import Query from '@/src/features/home/InputQuery';
 import { useSession } from "next-auth/react";
 
 
