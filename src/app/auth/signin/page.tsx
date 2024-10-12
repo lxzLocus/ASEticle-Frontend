@@ -6,5 +6,6 @@ import React, { useState, useEffect } from 'react';
 
 export default function SignInClient() {
  
-    return   <button onClick={() => signIn()}>Sign In</button>
+    // return   <button onClick={() => signIn()}>Sign In</button>
+    return signIn()
 }

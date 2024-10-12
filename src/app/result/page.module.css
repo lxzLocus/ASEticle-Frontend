@@ -9,20 +9,61 @@
     /* background-color: magenta; */
 }
 
-/* Top Bar */
-.topBar {
-    width: 100%;
-    height: 8vh;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 0 3rem;
-    box-sizing: border-box;
-    /* background-color: green; */
-}
+    /* Top Bar */
+    .topBar {
+        width: 100%;
+        height: 8vh;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0 3rem;
+        box-sizing: border-box;
+        /* background-color: green; */
+    }
 
+        /* Toggle Switch */
+        .switchLabelContainer {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-left: auto;
+            width: 30%;
+            /* 必要に応じて幅を変更 */
+            justify-content: flex-end;
+            /* 追加: 右端に寄せる */
+        }
+    
+    /*count bar*/
+    .countBar {
+        width: 100%;
+        height: 4vh;
+        display: flex;
+        align-items: center;
+        justify-content: left;
+        padding: 0 4rem;
+        box-sizing: border-box;
 
+        /* background-color: #f5f5f5;*/
+    }
 
+    /* Main Container */
+    .mainContainer {
+        display: flex;
+        width: 100vw;
+        height: 100%;
+
+        /* background-color: #ff0000; */
+    }
+
+        .contentContainer {
+            height: 100%;
+            width: 70vw;
+            margin-top: 2rem;
+            flex-grow: 1;
+            padding-bottom: 2rem;
+            padding-left: 5vw;
+            /* background-color: turquoise; */
+        }
 /*Image*/
 .image {
     height: 5vh;
@@ -42,78 +83,15 @@
     padding-left: 5vw;
 }
 
-.textField {
-    max-height: 3rem;
-    min-height: 2rem;
-    height: 3vh;
-    width: 60vw;
-    /* 必要に応じて幅を変更 */
-    max-width: 100%;
-}
+    .textField {
+        max-height: 3rem;
+        min-height: 2rem;
+        height: 3vh;
+        width: 60vw;
+        /* 必要に応じて幅を変更 */
+        max-width: 100%;
+    }
 
-/* Toggle Switch */
-.switchLabelContainer {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    margin-left: auto;
-    width: 30%;
-    /* 必要に応じて幅を変更 */
-    justify-content: flex-end;
-    /* 追加: 右端に寄せる */
-}
-
-/*count bar*/
-.countBar {
-    width: 100%;
-    height: 4vh;
-    display: flex;
-    align-items: center;
-    justify-content: left;
-    padding: 0 4rem;
-    box-sizing: border-box;
-
-    /* background-color: #f5f5f5;*/
-}
-
-/* Main Container */
-.mainContainer {
-    display: flex;
-    width: 100vw;
-    height: 100%;
-
-    /* background-color: #ff0000; */
-}
-
-.contentContainer {
-    height: 100%;
-    width: 70vw;
-    margin-top: 2rem;
-    flex-grow: 1;
-    padding-bottom: 2rem;
-    padding-left: 5vw;
-    /* background-color: turquoise; */
-}
-
-/* List Container */
-.listContainer {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding-top: 1rem;
-    padding-left: 3rem;
-    width: 25vw;
-    height: 100vh;
-
-    /* background-color: rgb(81, 255, 0); */
-}
-
-.listLabel {
-    font-size: 1rem;
-    font-weight: bold;
-    margin-bottom: 1.5rem;
-    padding-top: 1.5rem;
-}
 
 /* Array Item Container */
 .arrayItemContainer {
@@ -128,50 +106,93 @@
     border-radius: 8px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
+    .title {
+        font-size: 1.2rem;
+        font-weight: bold;
+        width: 70%;
+        text-decoration: none;
+        color: #65c3b0;
+    }
 
-.contentItem {
-    border: 2px solid #ccc;
-    width: 70%;
-    padding: 1.5rem;
-    margin-bottom: 1rem;
-    border-radius: 10px;
+    .author {
+        font-size: 0.9rem;
+        width: 80%;
+        padding: 0.5rem;
+        color: #555;
+    }
+
+    .abstract {
+        display: block;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        font-size: 1.1rem;
+        width: 90%;
+        color: #777;
+    }
+
+        .readMore {
+            color: rgb(0, 252, 223);
+            cursor: pointer;
+            margin-left: 5px;
+        }
+
+    .meta {
+        font-size: 1.1rem;
+        color: #999;
+        margin-top: 0.5rem;
+    }
+
+
+
+/* List Container */
+.listContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 1rem;
+    padding-left: 3rem;
+    width: 25vw;
+    height: 100vh;
+
+    /* background-color: rgb(81, 255, 0); */
 }
 
-.title {
-    font-size: 1.2rem;
-    font-weight: bold;
-    width: 70%;
-    text-decoration: none;
-    color: #65c3b0;
-}
+    .listLabel {
+        font-size: 1rem;
+        font-weight: bold;
+        margin-bottom: 1.5rem;
+        padding-top: 1.5rem;
+    }
 
-.author {
-    font-size: 0.9rem;
-    width: 80%;
-    padding: 0.5rem;
-    color: #555;
-}
+    .checkboxContainer {
+        width: 80%;
+        display: flex;
+        /*felex column*/
+        flex-direction: column;
+        gap: 0.5rem;
+        /* padding-top: 1rem; */
+    }
 
-.abstract {
-    display: block;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    font-size: 1.1rem;
-    width: 90%;
-    color: #777;
-}
+    .selectTrigger {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        /* background-color: magenta; */
+    }
 
-.readMore {
-    color: rgb(0, 252, 223);
-    cursor: pointer;
-    margin-left: 5px;
-}
+        /* Select Item */
+        .selectItem {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            padding: 0.5rem 1rem;
+            margin: 0.25rem 0;
+            cursor: pointer;
+        }
 
-.meta {
-    font-size: 1.1rem;
-    color: #999;
-    margin-top: 0.5rem;
-}
+
 
 /* Radix UI Components Styling */
 .segmentedControl {
@@ -191,33 +212,6 @@
     margin-bottom: 2rem;
 }
 
-.selectTrigger {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 100%;
-    /* background-color: magenta; */
-}
-
-/* Select Item */
-.selectItem {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 100%;
-    padding: 0.5rem 1rem;
-    margin: 0.25rem 0;
-    cursor: pointer;
-}
-
-.checkboxContainer {
-    width: 80%;
-    display: flex;
-    /*felex column*/
-    flex-direction: column;
-    gap: 0.5rem;
-    /* padding-top: 1rem; */
-}
 
 .checkboxCard {
     display: flex;
@@ -232,7 +226,13 @@
     max-width: "450px";
 }
 
-
+.contentItem {
+    border: 2px solid #ccc;
+    width: 70%;
+    padding: 1.5rem;
+    margin-bottom: 1rem;
+    border-radius: 10px;
+}
 
 /**************************
 ラベルカラー設定
