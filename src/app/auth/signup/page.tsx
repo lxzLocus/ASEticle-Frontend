@@ -3,7 +3,7 @@
 
 import { signIn } from "next-auth/react";
 
-export default function SignInPage() {
+export default function SignUpPage() {
     return (
         <div>
             <h1>ログイン</h1>
