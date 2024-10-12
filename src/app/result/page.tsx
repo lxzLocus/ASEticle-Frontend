@@ -6,8 +6,8 @@ import { MagnifyingGlassIcon, ArrowRightIcon, LayersIcon } from '@radix-ui/react
 import * as Dialog from '@radix-ui/react-dialog';
 import styles from './page.module.css';
 import React, { useState, useEffect, useRef } from 'react';
-import FetchScholarInfo from '@/features/api/FetchScholarInfo'; // ヤマギシ追加
-import refine from '@/features/module/ref'; // ヤマギシ追加
+import FetchScholarInfo from '@/src/features/api/FetchScholarInfo'; // ヤマギシ追加
+import refine from '@/src/features/module/ref'; // ヤマギシ追加
 import { useRouter } from 'next/navigation';
 import { useSession } from "next-auth/react"; // 追加
 
