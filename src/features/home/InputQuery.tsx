@@ -3,7 +3,7 @@
 import '@radix-ui/themes/styles.css';
 import { Flex, Box, TextField, IconButton } from '@radix-ui/themes';
 import { MagnifyingGlassIcon, ArrowRightIcon } from '@radix-ui/react-icons';
-import styles from '@/app/page.module.css';
+import styles from '@/src/app/page.module.css';
 import React, { useState} from 'react';
 import { useRouter } from 'next/navigation';
 

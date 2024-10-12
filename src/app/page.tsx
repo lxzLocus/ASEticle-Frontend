@@ -32,6 +32,8 @@ export default function Home() {
 		return null;
 	}
 
+
+
 	const imageSrc = darkMode ? '/images/DarkMode.png' : '/images/Nomal.png';
 
 	return (

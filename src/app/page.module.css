@@ -8,8 +8,7 @@
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    height: 80vh;
-    transform: translateY(0%);
+    height: 100%;
     /* background-color: #47ff78; */
 }
 
@@ -70,6 +69,7 @@
 /*Desktop ビューポート幅 : 1200px~*/
 @media (min-width: 1200px) {
     .queryContainer {
+        height: 50%;
         width: 60vw;
     }
 }
