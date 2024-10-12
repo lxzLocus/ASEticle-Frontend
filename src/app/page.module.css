@@ -12,28 +12,28 @@
     /* background-color: #47ff78; */
 }
 
-.queryContainer {
-    width: 80vw;
-    max-width: 650px;
-    height: 30vh;
-    max-height: 800px;
-    /* background-color: #ed28ed; */
-}
+    .queryContainer {
+        width: 80vw;
+        max-width: 650px;
+        height: 30vh;
+        max-height: 800px;
+        /* background-color: #ed28ed; */
+    }
 
-.textField {
-    width: 100%;
-    max-width: 100%;
-}
+    .textField {
+        width: 100%;
+        max-width: 100%;
+    }
 
-/*Image*/
-.image {
-    max-width: 75%;
-    height: auto;
-    margin: 0 auto;
-    margin-bottom: 50px;
-    margin-top: -20px;
-    /* background-color: #0800eb; */
-}
+    /*Image*/
+    .image {
+        max-width: 75%;
+        height: auto;
+        margin: 0 auto;
+        margin-bottom: 50px;
+        margin-top: -20px;
+        /* background-color: #0800eb; */
+    }
 
 /*Toggle Switch*/
 .switchLabelContainer {
@@ -47,23 +47,12 @@
     /* background-color: #eb4034; */
 }
 
-.switchLabel {
-    font-size: 14px;
-}
+    .switchLabel {
+        font-size: 14px;
+    }
 
 
 
-/* Array Item Container */
-.arrayItemContainer {
-    width: 80vw;
-    max-width: 800px;
-    padding: 1rem;
-    margin: 1rem 0;
-    border: 1px solid #ccc;
-    border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    background-color: #fff;
-}
 
 /* ディスプレイごとの設定 */
 /*Desktop ビューポート幅 : 1200px~*/
@@ -93,9 +82,5 @@
 
     .queryContainer {
         width: 80vw;
-    }
-
-    .arrayItemContainer {
-        width: 90vw;
     }
 }
